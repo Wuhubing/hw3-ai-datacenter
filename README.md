@@ -1,116 +1,61 @@
-# HW3 / PS3 — AI 数据中心投资决策网站
+# Compute Commons
 
-状态：已保存题目并拆解要求；尚未选国家、研究数据或开始网站开发。
+An investment decision workspace for a hypothetical university AI consortium. Compare **build and own**, **lease capacity**, and a **conditional first-phase hybrid** across a ten-year horizon. Research covers the United States, China and Singapore.
 
-执行顺序、阶段产出和验收条件见 [执行计划](PLAN.md)。
+The working recommendation is to lease while validating demand and grid terms. The analysis does not establish that a 25 MW facility is justified. Economic inputs and engineering sizes are clearly labeled assumptions, not vendor quotes or certified designs.
 
-已确认：比较美国、中国、新加坡；个人作业；英文提交、中文沟通。截止日期待补充，最终选址尚未确定。
+## Project status
 
-原始要求：[assignment-original.txt](docs/assignment-original.txt)。本文件仅根据用户提供的题目整理；未验证其中的平台配置示例，也未开展外部资料研究。
+Implemented: interactive scenario model, country comparison, source register, D1 persistence and migrations, genuine World Bank API refresh, ChatGPT sign-in integration, registration/roles, protected adviser endpoint, controlled tools, citation checks and token accounting.
 
-## 1. 我们究竟要做什么
+**Live AI is not activated:** the Site has no hosted OpenAI credential. The application returns an explicit unavailable state rather than a simulated response. Real AI citation quality, prompt-injection resistance and production identity remain to be verified. New Site and GitHub repository are private; course reviewers require appropriate access before submission.
 
-给大学联盟做一个 AI 数据中心投资决策网站，帮助投资委员会决定：**自建、租用，还是分阶段混合方案**。不能先假定自建最好；要用可追溯的证据说明教育科研需求、成本和风险。
+## Deliverables
 
-默认规模为 20 MW IT 负载、PUE 1.25，因此总设施用电需求为 25 MW（含计算、冷却等），全年按 8,760 小时计算为 219 GWh。这是题目基线，不是已验证的需求或实际耗电预测。可改为例如 10 MW，但必须说明理由。
+- [Two-page investment memo](public/deliverables/investment-memo.pdf)
+- [Editable five-minute committee presentation](public/deliverables/presentation.pptx) and [PDF](public/deliverables/presentation.pdf)
+- [One-page power, cooling, network and failure diagram](public/system-diagram.svg)
+- [Software architecture](docs/ARCHITECTURE.md) and [request-chain explanation](public/deliverables/architecture.pdf)
+- [Two-minute demonstration](public/deliverables/demo.mp4), with English synthetic narration and a [transcript/disclosures](docs/DEMO.md)
+- [Requirements](docs/requirements.md), [methodology](docs/METHODOLOGY.md), [validation](docs/VALIDATION.md), and [individual request walkthrough](docs/REQUEST-WALKTHROUGH.md)
+- [Original assignment](docs/assignment-original.txt), [Chinese summary](docs/ASSIGNMENT-OVERVIEW.zh.md), and [implementation plan](PLAN.md)
 
-已知约束：成员尚未签长期算力承诺；电网接入价格、升级费用和送电时间未知；不同学校需求不同；算力和成本分配规则尚未确定。
+## Run locally
 
-## 2. 投资与工程分析
+Node 22.13+ is required. Use the checked-in lockfile.
 
-原文允许组合讨论以下六类决策；建议网站简要覆盖全部，重点展开需求、架构与经济性：
+```sh
+npm ci
+npm run build
+node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js d1 execute DB --local --config dist/server/wrangler.json --persist-to .wrangler/state --file drizzle/0000_giant_jocasta.sql
+npm run dev
+```
 
-- **需求**：服务哪些学校和用户，需要多少有效 GPU 小时、何时需要、可用性和数据安全要求；是否真的需要 25 MW。
-- **架构**：电网、备用电源、UPS、冷却、网络、存储、GPU 策略；最大电气组件失效及电网停电 48 小时的影响。
-- **经济性**：10 年现金流，将建筑设施与 GPU 设备分开；纳入建设、电网升级、电费、人员、维护、融资、设备更换和闲置容量成本。比较自建、租用、分阶段混合三方案。
-- **融资**：开发股权、建设贷款和设备融资各需哪些证据；电力延误、需求下跌、成员退出的风险由谁承担。
-- **治理**：谁持有资产、分配算力、定价、接纳新成员、处理教学和科研冲突；如何保障小机构。
-- **替代方案及外部影响**：现有大学或商业设施、地理分布、能源、水、许可、对其他电网用户的影响。
+Apply each migration once per local database. Preview uses a loopback-only simulated ChatGPT user; it is not production identity. To test admin actions locally, set `ADMIN_USER_IDS=local_seedy` in an ignored `.dev.vars` file. Do not configure this test ID in production.
 
-必须展示三种情景，每种均报告四项指标：
+Initial evidence is seeded in an idempotent D1 batch on the first read. A saved design is never overwritten by seeding. The platform applies production schema migrations at deployment.
 
-| 情景 | 必须报告 |
-| --- | --- |
-| 基准情景 | 开业前所需现金、年度运营成本、每有效 GPU 小时成本、面临风险的资本金额 |
-| 完整电网供电延迟一年 | 同上 |
-| GPU 利用率仅为预测的一半 | 同上 |
+## Verify
 
-有效 GPU 小时的口径、闲置时间处理、资本风险的定义需写清楚。假设、估计、计算结果和已验证事实必须区分。若采用太阳能、风能、燃气或储能，需分析需要供电的具体时段内能贡献多少，并列出验证可用性目标还缺哪些数据。
+```sh
+node --experimental-strip-types --test tests/core.test.mjs
+npx tsc --noEmit
+# With local development server running:
+python3 scripts/verify-api.py
+```
 
-## 3. 网站最低功能
+The integration script changes and restores local model assumptions and refreshes the historical API. It uses only the local test identity. Tests never spend OpenAI tokens.
 
-| 编号 | 验收要求 |
-| --- | --- |
-| FR1 | 展示拟建地点和初步设计 |
-| FR2 | 比较至少三个国家 |
-| FR3 | 持久保存证据、来源和设计假设 |
-| FR4 | 从至少一个真实外部 API 获取数据 |
-| FR5 | 注册用户可向 AI 提问 |
-| FR6 | 后端拒绝未注册用户调用 AI 接口 |
-| FR7 | AI 的实质性回答引用支持证据 |
-| FR8 | 区分事实、估计、计算及未知；设计决定也单独记录 |
-| FR9 | 外部数据源失败时保留上次有效数据 |
-| FR10 | 显示每条数据的更新时间 |
+## Model and data boundaries
 
-题目指定使用 OpenAI Sites、服务端、Cloudflare D1、Sites 登录与服务端 OpenAI 调用；只有静态页面不够。实际实现前需核对当前平台接口，不能直接把题目中的概念配置当成已验证配置。
+All strategies serve equivalent modeled productive hours. Full facility costs and the GPU fleet are separate. A grid delay uses bridge leases. Low utilization leaves fixed and idle-power costs. Debt service is shown separately from discounted project cost. The hybrid models a 6.25 MW first phase, not automatic later expansion. Every economic input remains a sensitivity assumption.
 
-基础页面：Overview、Country Comparison、Initial Design、Evidence、Ask the Adviser。建议在这些页面中加入投资方案比较、现金流和敏感性分析。
+The World Bank API uses a 2015 renewable-electricity series because the queried 2022 values were missing. It is historical context only. The source register also includes 2024 EIA, China NBS and Singapore EMA statistics, a historical DOE data-center estimate and NVIDIA system documentation. National statistics do not establish site-specific capacity or prices.
 
-数据建议从六张表起步：users、countries、metrics、sources、designs、design_claims。users 不保存密码。财务模型输入及情景是否增表，在建模时决定。
+## Production configuration
 
-数据要求：至少三条人工核实的来源记录；每条指标包含数值、单位、报告期、发布者、来源 URL、获取日期及定义/局限。缺失值用 NULL，不能用 0 代替。
+`.openai/hosting.json` contains the project ID and logical D1 binding only. Configure `OPENAI_API_KEY` as a hosted secret, `OPENAI_MODEL` as a supported model (default `gpt-4.1-mini`), and `ADMIN_USER_IDS` with an actual authenticated Site user ID. `.env.example` documents these fields; no real secrets are committed. Do not paste keys into GitHub or browser code.
 
-权限要求：访客浏览；注册用户提问；编辑者刷新证据；团队管理员修改假设及分配角色。权限必须在服务端校验。密钥不能进入前端或版本库。题目说学生无需自行创建 OpenAI API key，需后续核实课程提供的托管配置。
+Adviser requests require authenticated identity, application registration, same origin and atomic hourly limits. The server supplies relevant D1 records and permits only approved tools. Citation IDs are validated, but factual entailment still needs live evaluation. Questions are not stored in audit events; token usage is recorded.
 
-AI 只根据 D1 当前设计、指标、主张和获批来源回答；引用必须对应真实来源记录。数值计算由程序完成；模型解释结果。未知就说明未知。需有限流并跟踪 token 使用。
-
-## 4. 最终提交清单
-
-两段题目要求合并列出，暂不视为互相替代：
-
-- [ ] 发布的网站 URL，并填入课程共享文档（原文未提供共享文档地址）
-- [ ] 网站中可见的假设、敏感性分析、三方案比较和三情景结果
-- [ ] 一页数据中心系统图：电力、冷却、网络和故障路径
-- [ ] 五分钟投资委员会汇报，并准备问答
-- [ ] 两页投资备忘录：明确推荐，以及最可能改变推荐的三个发现
-- [ ] 软件架构图：浏览器 → 后端鉴权 → D1 → OpenAI/受控工具 → 引用回答
-- [ ] D1 schema、迁移和初始数据
-- [ ] 外部来源及 API 清单
-- [ ] 初步数据中心设计说明
-- [ ] 功能需求表
-- [ ] 测试结果
-- [ ] 两分钟网站演示视频
-- [ ] 个人简短说明：一次请求如何从浏览器经过 D1、OpenAI 再返回
-
-## 5. 推荐执行顺序
-
-1. **定题与证据模型**：选三个比较国家及候选地区；定义用户、需求、非目标、关键未知和数据口径。
-2. **研究与投资模型**：收集最小可核实数据集；建立三方案的 10 年现金流及压力情景；形成暂定推荐。
-3. **网站骨架**：建立 Sites 项目与基础页面，将假设和程序计算展示出来。
-4. **持久化**：D1 schema、迁移、来源和种子数据、统一数据访问层。
-5. **数据更新**：接入真实 API；校验格式、单位、报告期和范围；保护刷新接口；失败保留旧数据。
-6. **登录与注册**：区分身份验证、应用注册和角色权限，完成后端限制。
-7. **AI 顾问**：检索相关 D1 数据，添加受控工具、真实引用、限流与用量记录。
-8. **测试与发布**：预览和上线均验证，整理图、备忘录、汇报和演示视频。
-
-题目建议课堂 60 分钟完成需求、研究计划、初始假设、能耗计算、网站结构、schema、初步预览及架构讲解；课后 3–4 小时补齐数据、系统功能、测试与发布。这是题目建议时间，并非我们的完成时间承诺。
-
-## 6. 关键测试
-
-- [ ] 未登录可看公开设计，但无法调用 AI；登录但未注册仍被要求注册
-- [ ] 注册后可提问；AI 返回 D1 中的当前 PUE
-- [ ] 修改 PUE 后，计算和 AI 回答同步更新
-- [ ] 缺失数据不编造；引用均对应真实来源
-- [ ] 外部 API 更新成功显示新时间；模拟失败保留旧数据
-- [ ] 未授权编辑和刷新均由后端拒绝
-- [ ] 来源中加入恶意指令时，AI 将其视为资料而非指令
-- [ ] AI 不将初步设计描述为专业工程认证
-- [ ] D1 迁移成功、密钥不暴露、构建成功、部署后重复功能验收
-
-## 7. 需要留意的题目歧义
-
-- 前半明确要求 10 年现金流，但后半把“financial investment model”列为可选非目标示例。执行上保留前半要求，将非目标界定为“非施工级工程设计、非专业投资认证”，不据此删去经济分析。
-- 五分钟投资汇报与两分钟网站视频分别出现，当前均纳入提交清单。
-- 原文没有给截止日期、共享文档链接、团队信息，也没有指定必须选择哪些国家。
-
-下一步先确定三个国家和目标用户，再开始证据收集与模型设计。
+The application relies on the Sites dispatcher to inject trusted identity headers. Do not expose the Worker directly on an untrusted endpoint without equivalent header authentication.

@@ -1,0 +1,66 @@
+[
+  {
+    "test": "Public evidence and seeded D1",
+    "result": "pass"
+  },
+  {
+    "test": "Anonymous denied: adviser",
+    "result": "pass"
+  },
+  {
+    "test": "Anonymous denied: refresh",
+    "result": "pass"
+  },
+  {
+    "test": "Anonymous denied: design",
+    "result": "pass"
+  },
+  {
+    "test": "Anonymous denied: roles",
+    "result": "pass"
+  },
+  {
+    "test": "Local mock sign-in",
+    "result": "pass"
+  },
+  {
+    "test": "Registration requires consent",
+    "result": "pass"
+  },
+  {
+    "test": "Registration persists",
+    "result": "pass"
+  },
+  {
+    "test": "Registered access",
+    "result": "pass"
+  },
+  {
+    "test": "Cross-origin writes denied",
+    "result": "pass"
+  },
+  {
+    "test": "Missing AI key returns explicit unavailable",
+    "result": "pass"
+  },
+  {
+    "test": "Admin can persist PUE",
+    "result": "pass"
+  },
+  {
+    "test": "Reload reads changed PUE",
+    "result": "pass"
+  },
+  {
+    "test": "Stale edits rejected",
+    "result": "pass"
+  },
+  {
+    "test": "Baseline restored",
+    "result": "pass"
+  },
+  {
+    "test": "Real external API refresh",
+    "result": "pass"
+  }
+]

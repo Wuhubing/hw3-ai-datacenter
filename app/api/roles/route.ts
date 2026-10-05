@@ -1,0 +1,3 @@
+import {originCheck,member,body,failure,HttpError} from '@/lib/auth';
+import {db,audit} from '@/lib/data';
+export async function POST(req:Request){try{originCheck(req);const u=await member(['admin']);const b=await body(req);if(!['viewer','editor','admin'].includes(b.role)||typeof b.userId!=='string')throw new HttpError(400,'Invalid role.');const r=await db().prepare('UPDATE users SET role=? WHERE authenticated_user_id=?').bind(b.role,b.userId).run();if(!r.meta.changes)throw new HttpError(404,'Registered user not found.');await audit(u.userId,'role',JSON.stringify({target:b.userId,role:b.role}));return Response.json({ok:true})}catch(e){return failure(e)}}

@@ -1,0 +1,3 @@
+import {identity,originCheck,body,HttpError,failure} from '@/lib/auth';
+import {db,audit} from '@/lib/data';
+export async function POST(req:Request){try{originCheck(req);const u=await identity();const b=await body(req);if(b.agreed!==true)throw new HttpError(400,'Accept the project rules to register.');await db().prepare('INSERT OR IGNORE INTO users (authenticated_user_id,email,role,registered_at) VALUES (?,?,?,?)').bind(u.userId,u.email,'viewer',new Date().toISOString()).run();await audit(u.userId,'register','Accepted educational-use rules');return Response.json({ok:true})}catch(e){return failure(e)}}
