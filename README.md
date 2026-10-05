@@ -8,7 +8,7 @@ The working recommendation is to lease while validating demand and grid terms. T
 
 Implemented: interactive scenario model, country comparison, source register, D1 persistence and migrations, genuine World Bank API refresh, ChatGPT sign-in integration, registration/roles, protected adviser endpoint, controlled tools, citation checks and token accounting.
 
-**Live AI is not activated:** the Site has no hosted OpenAI credential. The application returns an explicit unavailable state rather than a simulated response. Real AI citation quality, prompt-injection resistance and production identity remain to be verified. New Site and GitHub repository are private; course reviewers require appropriate access before submission.
+**Live AI is configured:** the hosted secret is set for `gpt-4.1-mini`. Hosted sign-in and registration were verified. Citation identifiers are constrained to the evidence register; broader factual entailment and malicious-source prompt-injection evaluation remain limited. New Site and GitHub repository are private; course reviewers require appropriate access before submission.
 
 ## Deliverables
 

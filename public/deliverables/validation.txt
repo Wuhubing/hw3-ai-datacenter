@@ -1,6 +1,6 @@
 # Validation status
 
-Date: 2026-10-05. Local preview uses the starter's test identity, not a real hosted user.
+Date: 2026-10-05. Local preview uses the starter's test identity; the hosted owner completed real sign-in and viewer registration.
 
 ## Passed
 
@@ -13,13 +13,13 @@ Date: 2026-10-05. Local preview uses the starter's test identity, not a real hos
 
 ## Pending or limited
 
-- Real OpenAI request, factual entailment of citations, missing-fact behavior and malicious-source prompt-injection evaluation: hosted key not configured. Policy and schema checks are not substitutes for live model tests.
-- Real hosted sign-in and role bootstrap require an actual authenticated Site user ID. The local admin test identity is never a production administrator.
+- The hosted OpenAI key passed a real minimal Responses request. The first hosted adviser request exposed internal claim IDs in external citations; the response schema now restricts citation values to actual source IDs. Broad factual entailment, missing-fact behavior and malicious-source prompt-injection evaluation still require further testing.
+- Hosted sign-in and viewer registration passed. Administrator bootstrap is not configured; the local admin test identity is never a production administrator.
 - Logged-in but unregistered and registered-viewer endpoint checks require a fresh local/hosted test identity; anonymous rejection and admin flow are already tested.
 - WebMCP registration is feature-detected. Validation is unavailable in the preview browser if it lacks `document.modelContext`; this optional facility does not gate normal website use.
 - Private hosted audience prevents anonymous production browsing. The owner must explicitly authorize a public audience or supply reviewer access for grading.
 - Real demand, site utility terms, vendor prices, water permits and engineering availability remain unknown. Numerical sensitivity tests do not validate those assumptions.
-- Demo uses actual local UI with synthetic English narration and clearly states the AI activation gap. Refresh the final segment after live AI verification for final course submission.
+- Demo uses actual local UI with synthetic English narration and describes the earlier AI activation gap. Refresh the final segment after live AI verification for final course submission.
 
 ## Reproduce
 
