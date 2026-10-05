@@ -1,0 +1,11 @@
+.DS_Store
+node_modules/
+.env*
+!.env.example
+.wrangler/
+.sites-runtime/
+.vinext/
+.next/
+dist/
+*.tsbuildinfo
+__pycache__/
