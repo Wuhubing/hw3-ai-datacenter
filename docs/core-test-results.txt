@@ -2,73 +2,73 @@ TAP version 13
 # Subtest: baseline power and energy preserve site/IT boundary
 ok 1 - baseline power and energy preserve site/IT boundary
   ---
-  duration_ms: 0.702584
+  duration_ms: 0.621833
   type: 'test'
   ...
 # Subtest: same demand across three strategies in all cases
 ok 2 - same demand across three strategies in all cases
   ---
-  duration_ms: 0.477042
+  duration_ms: 0.454833
   type: 'test'
   ...
 # Subtest: delay leases bridge compute, shifts replacement and preserves demand
 ok 3 - delay leases bridge compute, shifts replacement and preserves demand
   ---
-  duration_ms: 0.075625
+  duration_ms: 0.077375
   type: 'test'
   ...
 # Subtest: half utilization halves output but not electricity or fixed costs
 ok 4 - half utilization halves output but not electricity or fixed costs
   ---
-  duration_ms: 0.458042
+  duration_ms: 0.3085
   type: 'test'
   ...
 # Subtest: lease is independent of the owned site grid delay
 ok 5 - lease is independent of the owned site grid delay
   ---
-  duration_ms: 0.143958
+  duration_ms: 0.094667
   type: 'test'
   ...
 # Subtest: cash-flow arithmetic and financing avoid double counting
 ok 6 - cash-flow arithmetic and financing avoid double counting
   ---
-  duration_ms: 0.081167
+  duration_ms: 0.059125
   type: 'test'
   ...
 # Subtest: independent first year hand calculation
 ok 7 - independent first year hand calculation
   ---
-  duration_ms: 0.101584
+  duration_ms: 0.077042
   type: 'test'
   ...
 # Subtest: zero output yields undefined unit cost, never free compute
 ok 8 - zero output yields undefined unit cost, never free compute
   ---
-  duration_ms: 0.047292
+  duration_ms: 0.036417
   type: 'test'
   ...
 # Subtest: invalid model inputs fail
 ok 9 - invalid model inputs fail
   ---
-  duration_ms: 0.300542
+  duration_ms: 0.247583
   type: 'test'
   ...
 # Subtest: external API validates complete aligned country observations
 ok 10 - external API validates complete aligned country observations
   ---
-  duration_ms: 0.743083
+  duration_ms: 0.782542
   type: 'test'
   ...
 # Subtest: external failure leaves last valid records untouched
 ok 11 - external failure leaves last valid records untouched
   ---
-  duration_ms: 0.198541
+  duration_ms: 0.189958
   type: 'test'
   ...
 # Subtest: invented and undeclared inline source IDs fail closed
 ok 12 - invented and undeclared inline source IDs fail closed
   ---
-  duration_ms: 0.164
+  duration_ms: 0.143041
   type: 'test'
   ...
 1..12
@@ -79,4 +79,4 @@ ok 12 - invented and undeclared inline source IDs fail closed
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 70.525542
+# duration_ms 68.466083
