@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-06",
+  "environment": "Actual owner-authenticated production Site through browser UI",
+  "site": "https://university-compute-decision.wuhubing19.chatgpt.site/",
+  "checks": [
+    {
+      "test": "Owner has application admin role",
+      "result": "pass"
+    },
+    {
+      "test": "Save PUE 1.30 then live adviser returns 1.30 / 227.76 GWh",
+      "result": "pass"
+    },
+    {
+      "test": "Restore PUE 1.25 then live adviser and server fact line return 25 MW / 219 GWh",
+      "result": "pass"
+    },
+    {
+      "test": "Engineering concept returns five generators / 300 MWh / 90000 L as assumptions",
+      "result": "pass with limitation",
+      "detail": "One narrative used IT rather than total facility terminology for 6.25 MW; final policy explicitly corrects the boundary. See VALIDATION.md."
+    },
+    {
+      "test": "Administrator external refresh",
+      "result": "pass",
+      "retrievedAt": "2026-10-06T00:24:47.821Z"
+    },
+    {
+      "test": "Live Singapore source citation and capacity limitation",
+      "result": "pass",
+      "detail": "94% natural gas in 2024, S3; no available site capacity or reliability guarantee."
+    },
+    {
+      "test": "WebMCP half scenario and invalid utilization rejection, then baseline restoration",
+      "result": "pass"
+    },
+    {
+      "test": "Anonymous hosted website visibility",
+      "result": "pending audience choice",
+      "detail": "Site remains owner-private; application route authorization is separately tested."
+    }
+  ]
+}

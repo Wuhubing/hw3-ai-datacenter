@@ -25,3 +25,5 @@ Eight tables: users, countries, sources, metrics, designs, design_claims, events
 All mutation endpoints check same origin and identity. Registration cannot assign roles. The configured `ADMIN_USER_IDS` allowlist bootstraps an administrator without making the first registrant an administrator. Further role changes require admin. The local mock identity only belongs to loopback preview and is not a production account.
 
 The site is private at initial publication. A public audience requires the owner's explicit instruction. Never assume course graders can open private resources.
+
+Engineering concept claims C11-C19 persist separately from the editable numeric model. Every adviser request includes deterministic full-load power/energy; every displayed answer includes the saved PUE, facility MW and annual GWh calculated on the server.

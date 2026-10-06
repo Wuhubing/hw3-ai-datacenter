@@ -1,35 +1,39 @@
 # Two-minute website demonstration
 
-Real local application recording with English synthetic narration (macOS Samantha), not the student's voice. The recording discloses local authentication and the pending live AI credential. It is a pre-activation demonstration, not evidence that live AI passed.
+120-second edited sequence of actual hosted website screenshots and the website system diagram, captured during authenticated testing. It is not a continuous screen recording. English voice is synthetic (macOS Samantha), not the student's voice. Captures show real model results, a real successful API refresh, and real OpenAI answers. The temporary PUE test was restored to 1.25 before final baseline captures.
 
-## 000–015 seconds: A decision workspace, with visible assumptions
+## 000-012 seconds: A decision, not a sales pitch
 
-Compute Commons evaluates a shared university AI facility. The recommendation is to lease first while collecting evidence. Construction remains conditional on signed demand and firm grid terms. This recording uses the local working application.
+Compute Commons evaluates whether a shared university data center is justified. The recommendation is to lease first while collecting signed demand and firm grid terms. These are real website captures with synthetic narration.
 
-## 015–030 seconds: Half utilization raises ownership cost
+## 012-024 seconds: Stress the demand
 
-The stress controls use the same underlying calculation code. Halving forecast utilization raises owned cost to about seven dollars and twenty seven cents per productive GPU hour. Fixed expenses and idle power do not disappear.
+The scenario controls compare build, lease, and phased hybrid choices. Halving utilization raises owned cost to seven dollars and twenty seven cents per productive GPU hour. Fixed costs and idle power remain.
 
-## 030–045 seconds: Inspect ten years of cash flow
+## 024-039 seconds: Inspect ten years of cash flow
 
-The investment page separates facility and GPU fleet costs. Annual rows show electricity, staffing, maintenance, leases, replacements and financing. Inputs are illustrative assumptions, not quotations. The spreadsheet download contains the current scenario.
+The investment model separates facility, grid, and GPU costs. Annual rows include electricity, staff, maintenance, replacements, and debt service. Sliders expose assumptions, and the current cash flow can be downloaded. Prices remain illustrative, not supplier quotes.
 
-## 045–060 seconds: United States, China and Singapore
+## 039-051 seconds: Compare three countries
 
-The country page shows sourced national statistics with their reporting years. These figures do not establish available capacity at a site. Different fuel categories are kept distinct. Missing tariffs, grid dates and water allocations remain unknown.
+The country comparison uses sourced national statistics. Reporting years and definitions remain visible. National generation is not available site capacity. Missing site tariffs, water allocations, and connection dates stay unknown instead of becoming zero.
 
-## 060–075 seconds: Power, cooling, networking and failure paths
+## 051-066 seconds: Plan for failure
 
-The system diagram describes a conditional six point two five megawatt first phase. It traces power, cooling and networking. Transformer loss and a forty eight hour outage require engineering tests and verified fuel logistics before any uptime claim.
+The engineering concept proposes two transformer paths and five generators, with one spare. Forty eight hours at six point two five megawatts requires three hundred megawatt hours. The ninety thousand liter fuel estimate needs engineering validation.
 
-## 075–090 seconds: Facts, assumptions, calculations and unknowns
+## 066-081 seconds: Refresh evidence safely
 
-The evidence register separates facts, assumptions, calculations, decisions and unknowns. Source links and retrieval dates remain visible. The external World Bank series is explicitly historical. Authorized refresh validates new observations before replacing the displayed records.
+An authorized editor can refresh the historical World Bank series without rebuilding the website. The server validates each response before saving new observations. The page shows the new retrieval time. Failure tests confirm that prior valid records are preserved.
 
-## 090–105 seconds: Real access checks; AI activation is still pending
+## 081-096 seconds: Ask about the saved design
 
-ChatGPT sign in and application registration are distinct. This local preview uses the starter's test identity. The server protects the adviser endpoint. Live answers await an approved hosted credential, and the application does not substitute simulated answers.
+The adviser reads saved D1 inputs and engineering claims. Here the baseline PUE is one point two five, and full load annual energy is two hundred nineteen gigawatt hours. A separate test saved one point three and confirmed the answer changed.
 
-## 105–120 seconds: Decision package and remaining verification
+## 096-108 seconds: Inspect the evidence used
 
-The deliverables include a two page investment memo, system architecture and an editable committee presentation. The repository includes tests and methods. Before course submission, activate and verify live AI, check hosted access and enter the published URL.
+This real answer cites Singapore’s Energy Market Authority for the reported natural gas share. It also states the limitation: national statistics do not prove spare capacity. Tokens are recorded, and unsupported claims should remain unresolved.
+
+## 108-120 seconds: Review the decision package
+
+The package includes the two page memo, system and software diagrams, five minute presentation, and test results. Access checks and a malicious source test passed. The final course submission still requires reviewer access and the shared document link.

@@ -8,4 +8,4 @@
 6. The server checks the structured answer and citation IDs against retrieved sources, returns answer/assumptions/unknowns/citations and records token usage. The browser renders text safely through React.
 7. Missing identity gives 401, missing registration gives 403, and a missing hosted AI credential gives an explicit 503. No canned answer masquerades as a model response.
 
-A valid citation ID proves that a source exists, not that it supports every sentence. Real answer quality, citation entailment and malicious-source tests remain mandatory once a hosted credential is configured.
+A valid citation ID proves that a source exists, not that it supports every sentence. Real saved-input, missing-fact, citation, certification-boundary and malicious-source tests were run; detailed scope is recorded in VALIDATION.md. One malicious-source fixture is not a general prompt-injection guarantee. The server also supplies and displays deterministic full-load energy, preventing reliance on model-generated arithmetic for this value.

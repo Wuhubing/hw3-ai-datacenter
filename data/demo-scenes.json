@@ -1,10 +1,65 @@
 [
-{"view":"decision","caption":"A decision workspace, with visible assumptions","text":"Compute Commons evaluates a shared university AI facility. The recommendation is to lease first while collecting evidence. Construction remains conditional on signed demand and firm grid terms. This recording uses the local working application."},
-{"view":"decision","action":"half","caption":"Half utilization raises ownership cost","text":"The stress controls use the same underlying calculation code. Halving forecast utilization raises owned cost to about seven dollars and twenty seven cents per productive GPU hour. Fixed expenses and idle power do not disappear."},
-{"view":"investment-model","caption":"Inspect ten years of cash flow","text":"The investment page separates facility and GPU fleet costs. Annual rows show electricity, staffing, maintenance, leases, replacements and financing. Inputs are illustrative assumptions, not quotations. The spreadsheet download contains the current scenario."},
-{"view":"countries","caption":"United States, China and Singapore","text":"The country page shows sourced national statistics with their reporting years. These figures do not establish available capacity at a site. Different fuel categories are kept distinct. Missing tariffs, grid dates and water allocations remain unknown."},
-{"view":"system-design","caption":"Power, cooling, networking and failure paths","text":"The system diagram describes a conditional six point two five megawatt first phase. It traces power, cooling and networking. Transformer loss and a forty eight hour outage require engineering tests and verified fuel logistics before any uptime claim."},
-{"view":"evidence","caption":"Facts, assumptions, calculations and unknowns","text":"The evidence register separates facts, assumptions, calculations, decisions and unknowns. Source links and retrieval dates remain visible. The external World Bank series is explicitly historical. Authorized refresh validates new observations before replacing the displayed records."},
-{"view":"adviser","action":"signin","caption":"Real access checks; AI activation is still pending","text":"ChatGPT sign in and application registration are distinct. This local preview uses the starter's test identity. The server protects the adviser endpoint. Live answers await an approved hosted credential, and the application does not substitute simulated answers."},
-{"view":"deliverables","caption":"Decision package and remaining verification","text":"The deliverables include a two page investment memo, system architecture and an editable committee presentation. The repository includes tests and methods. Before course submission, activate and verify live AI, check hosted access and enter the published URL."}
+  {
+    "duration": 12,
+    "caption": "A decision, not a sales pitch",
+    "takeaway": "Lease first. Keep ownership conditional.",
+    "text": "Compute Commons evaluates whether a shared university data center is justified. The recommendation is to lease first while collecting signed demand and firm grid terms. These are real website captures with synthetic narration.",
+    "capture": "01.jpg"
+  },
+  {
+    "duration": 12,
+    "caption": "Stress the demand",
+    "takeaway": "Half utilization exposes ownership risk.",
+    "text": "The scenario controls compare build, lease, and phased hybrid choices. Halving utilization raises owned cost to seven dollars and twenty seven cents per productive GPU hour. Fixed costs and idle power remain.",
+    "capture": "02.jpg"
+  },
+  {
+    "duration": 15,
+    "caption": "Inspect ten years of cash flow",
+    "takeaway": "Facility and GPU fleet costs stay separate.",
+    "text": "The investment model separates facility, grid, and GPU costs. Annual rows include electricity, staff, maintenance, replacements, and debt service. Sliders expose assumptions, and the current cash flow can be downloaded. Prices remain illustrative, not supplier quotes.",
+    "capture": "03.jpg"
+  },
+  {
+    "duration": 12,
+    "caption": "Compare three countries",
+    "takeaway": "United States / China / Singapore",
+    "text": "The country comparison uses sourced national statistics. Reporting years and definitions remain visible. National generation is not available site capacity. Missing site tariffs, water allocations, and connection dates stay unknown instead of becoming zero.",
+    "capture": "04.jpg"
+  },
+  {
+    "duration": 15,
+    "caption": "Plan for failure",
+    "takeaway": "A conditional 6.25 MW first phase",
+    "text": "The engineering concept proposes two transformer paths and five generators, with one spare. Forty eight hours at six point two five megawatts requires three hundred megawatt hours. The ninety thousand liter fuel estimate needs engineering validation.",
+    "capture": "05.jpg"
+  },
+  {
+    "duration": 15,
+    "caption": "Refresh evidence safely",
+    "takeaway": "Authorized refresh; visible retrieval time",
+    "text": "An authorized editor can refresh the historical World Bank series without rebuilding the website. The server validates each response before saving new observations. The page shows the new retrieval time. Failure tests confirm that prior valid records are preserved.",
+    "capture": "06.jpg"
+  },
+  {
+    "duration": 15,
+    "caption": "Ask about the saved design",
+    "takeaway": "Real AI / deterministic energy calculation",
+    "text": "The adviser reads saved D1 inputs and engineering claims. Here the baseline PUE is one point two five, and full load annual energy is two hundred nineteen gigawatt hours. A separate test saved one point three and confirmed the answer changed.",
+    "capture": "07.jpg"
+  },
+  {
+    "duration": 12,
+    "caption": "Inspect the evidence used",
+    "takeaway": "Real source links and clear uncertainty",
+    "text": "This real answer cites Singapore\u2019s Energy Market Authority for the reported natural gas share. It also states the limitation: national statistics do not prove spare capacity. Tokens are recorded, and unsupported claims should remain unresolved.",
+    "capture": "08.jpg"
+  },
+  {
+    "duration": 12,
+    "caption": "Review the decision package",
+    "takeaway": "Memo / diagrams / slides / test results",
+    "text": "The package includes the two page memo, system and software diagrams, five minute presentation, and test results. Access checks and a malicious source test passed. The final course submission still requires reviewer access and the shared document link.",
+    "capture": "09.jpg"
+  }
 ]

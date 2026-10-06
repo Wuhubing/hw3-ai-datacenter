@@ -2,17 +2,21 @@
 
 | Requirement | Implementation | Verification |
 | --- | --- | --- |
-| FR1 Location and initial design | Decision / System design | UI reviewed |
-| FR2 Three countries | Countries: USA, CHN, SGP | D1 and UI checked |
-| FR3 Persistent provenance | D1 countries, sources, metrics, designs, claims | Local migration and restart/read verified |
-| FR4 External API | Fixed World Bank WDI endpoint | Real refresh returned three validated records |
-| FR5 Registered AI questions | Adviser + Responses API route | Registration checked; live AI pending hosted key |
-| FR6 Reject unregistered AI calls | Identity + users query in backend | Anonymous rejection checked; unregistered flow to verify in clean session |
-| FR7 Cited substantive answers | Structured answer and source-ID validation | Implementation complete; live entailment/injection tests pending |
-| FR8 Fact/assumption/calculation/unknown | Claim types and visible evidence labels | UI reviewed |
-| FR9 Preserve last valid record | Validate complete API response before batch | Validator tests passed; simulated external failure confirms zero database writes |
-| FR10 Update timestamps | Metric retrieval and design update timestamps | Local refresh checked |
+| FR1 Location and initial design | Massachusetts scenario; 20 MW IT / 25 MW baseline; fixed 6.25 MW first-phase concept | Hosted UI and 19 D1 claims reviewed |
+| FR2 Compare at least three countries | USA, China, Singapore; explicit national/site distinction | D1/UI checked; unavailable values stay unknown |
+| FR3 Persistent evidence and assumptions | D1 countries, sources, metrics, designs and typed claims | Saved PUE reload; engineering claims persist; production UI verified |
+| FR4 At least one external API | Fixed historical World Bank WDI endpoint | Real route and production administrator refresh passed |
+| FR5 Registered users can ask AI | Protected Responses API route, controlled read/calculation tools | Real owner registration and model questions passed |
+| FR6 Reject unregistered AI calls | Server identity plus users record | Anonymous 401 and signed-in/unregistered 403 in route harness |
+| FR7 Cite substantive external claims | Real D1 source links and source-ID enum/validation | Singapore answer returns S3; entailment remains bounded, not guaranteed |
+| FR8 Distinguish evidence types | Typed claims; answer assumptions/uncertainties; server-computed energy fact line | UI and live answers reviewed |
+| FR9 Preserve last valid data | Validate all external observations before atomic batch | Simulated 503 preserves every metric row; real refresh separately passed |
+| FR10 Visible update times | Metric retrieval timestamps and saved-design timestamp | Production refresh and changed design verified |
 
-Non-goals: construction certification, real-time grid operation, actual procurement authorization, financial advice, measured institutional demand. The ten-year scenario model remains required and implemented.
+Additional acceptance: viewer cannot edit/refresh/assign roles; admin can save assumptions; real AI follows a changed PUE; missing facts and certification limits are stated; deliberately malicious source instruction is rejected in a disposable-database live test. See VALIDATION.md for scope and known model limitations.
 
-The site starts private. Public/anonymous application behavior is tested locally. Anonymous access through the hosted platform must wait for an authorized audience change. Application authentication does not imply course membership.
+The website implements build/lease/hybrid comparisons, all required stress cases and four metrics, a ten-year facility/GPU cash-flow model, governance, financing gates, first-phase failure paths and visible sensitivity assumptions. The original assignment allows a smaller proposed facility; the fixed engineering concept is not silently resized by economic sliders.
+
+Non-goals: construction certification, real-time grid operation, procurement authorization, financial advice and measured institutional demand. The ten-year illustrative scenario model is implemented.
+
+Submission access remains pending. The site and GitHub repository remain private until the owner selects a reviewer-access method. Public application routes are tested independently of the Sites audience gate.

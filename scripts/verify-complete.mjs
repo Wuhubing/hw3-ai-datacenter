@@ -32,11 +32,12 @@ check('Administrator saves PUE',(await call('design',{inputs:updated,version:e.d
 e=await evidence();check('Saved PUE reload and deterministic energy',e.design.inputs.pue===1.3&&e.design.inputs.itMW*e.design.inputs.pue*8.76===227.76);
 if(key&&!onlyInjection){const a=await call('adviser',{question:'In under 90 words, give the CURRENT SAVED PUE and full-load annual GWh, then describe the fixed first-phase 48-hour backup: generator count, MWh and fuel liters. Distinguish assumptions from certified performance.'});check('Live AI follows changed saved PUE',a.status===200&&/1\.3\b/.test(a.answer)&&/227\.76|227\.8/.test(a.answer),a);}
 check('Administrator restores original PUE',(await call('design',{inputs:before,version:e.design.updated_at})).status===200);
+const beforeFailure=JSON.stringify(sql.prepare('SELECT * FROM metrics ORDER BY id').all());
 const count=sql.prepare('SELECT COUNT(*) n FROM metrics').get().n;
 const realFetch=globalThis.fetch;
 globalThis.fetch=async url=>{assert.ok(String(url).startsWith('https://api.worldbank.org/'));return new Response('Unavailable',{status:503})};
 const failed=await call('refresh');globalThis.fetch=realFetch;
-check('External API failure preserves exact saved metrics',failed.status===503&&sql.prepare('SELECT COUNT(*) n FROM metrics').get().n===count);
+check('External API failure preserves exact saved metrics',failed.status===503&&JSON.stringify(sql.prepare('SELECT * FROM metrics ORDER BY id').all())===beforeFailure);
 const refreshed=await call('refresh');check('Real external API refresh persists new rows and timestamps',refreshed.status===200&&refreshed.count===3&&sql.prepare('SELECT COUNT(*) n FROM metrics').get().n===count+3,refreshed);
 if(key){
 if(!onlyInjection)for(const [test,question,verify] of [
@@ -54,5 +55,5 @@ check('No production database mutations by this test harness',true,'All route te
 }catch(error){results.push({test:error.message,result:'fail'});process.exitCode=1;console.error('FAIL '+error.message)}finally{
 const tokenRecords=sql.prepare("SELECT detail FROM events WHERE kind='ai_usage'").all().map(r=>JSON.parse(r.detail));
 const report={date:new Date().toISOString(),environment:'Actual route handlers with disposable SQLite/D1 adapter and mocked identity; real World Bank and optional real OpenAI',liveAI:!!key,totalTokens:tokenRecords.reduce((sum,r)=>sum+(r.tokens||0),0),results};
-fs.writeFileSync(onlyInjection?'docs/injection-retest-results.json':'docs/complete-test-results.json',JSON.stringify(report,null,2)+'\n');
+fs.writeFileSync(onlyInjection?'docs/injection-retest-results.json':key?'docs/complete-test-results.json':'docs/route-test-results.json',JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({checks:results.length,failed:results.filter(r=>r.result==='fail').length,totalTokens:report.totalTokens}));sql.close();globalThis.__hw3Test.env.OPENAI_API_KEY='';}

@@ -8,15 +8,15 @@ The working recommendation is to lease while validating demand and grid terms. T
 
 Implemented: interactive scenario model, country comparison, source register, D1 persistence and migrations, genuine World Bank API refresh, ChatGPT sign-in integration, registration/roles, protected adviser endpoint, controlled tools, citation checks and token accounting.
 
-**Live AI is configured:** the hosted secret is set for `gpt-4.1-mini`. Hosted sign-in and registration were verified. Citation identifiers are constrained to the evidence register; broader factual entailment and malicious-source prompt-injection evaluation remain limited. New Site and GitHub repository are private; course reviewers require appropriate access before submission.
+**Live AI is configured:** the hosted secret is set for `gpt-4.1-mini`. Hosted sign-in, registration, administrator save and external refresh were verified. Actual route tests with real OpenAI cover saved-input changes, missing facts, citations, engineering concepts, certification limits and one malicious-source fixture. Finite tests do not guarantee all model answers; see the validation report. New Site and GitHub repository are private; course reviewers require appropriate access before submission.
 
 ## Deliverables
 
 - [Two-page investment memo](public/deliverables/investment-memo.pdf)
 - [Editable five-minute committee presentation](public/deliverables/presentation.pptx) and [PDF](public/deliverables/presentation.pdf)
-- [One-page power, cooling, network and failure diagram](public/system-diagram.svg)
+- [One-page power, cooling, network and failure diagram](public/deliverables/system-diagram.pdf) and [SVG](public/system-diagram.svg)
 - [Software architecture](docs/ARCHITECTURE.md) and [request-chain explanation](public/deliverables/architecture.pdf)
-- [Two-minute demonstration](public/deliverables/demo.mp4), with English synthetic narration and a [transcript/disclosures](docs/DEMO.md)
+- [Two-minute demonstration](public/deliverables/demo.mp4), using actual hosted website captures and English synthetic narration, with [transcript/disclosures](docs/DEMO.md)
 - [Requirements](docs/requirements.md), [methodology](docs/METHODOLOGY.md), [validation](docs/VALIDATION.md), and [individual request walkthrough](docs/REQUEST-WALKTHROUGH.md)
 - [Original assignment](docs/assignment-original.txt), [Chinese summary](docs/ASSIGNMENT-OVERVIEW.zh.md), and [implementation plan](PLAN.md)
 
@@ -44,7 +44,7 @@ npx tsc --noEmit
 python3 scripts/verify-api.py
 ```
 
-The integration script changes and restores local model assumptions and refreshes the historical API. It uses only the local test identity. Tests never spend OpenAI tokens.
+The integration script changes and restores local model assumptions and refreshes the historical API. It uses only the local test identity. The optional `scripts/verify-complete.mjs --live-key-file ...` path makes real paid model calls; without that flag it makes none. Its SQLite database and identities are disposable, and it does not mutate production.
 
 ## Model and data boundaries
 
@@ -56,6 +56,10 @@ The World Bank API uses a 2015 renewable-electricity series because the queried 
 
 `.openai/hosting.json` contains the project ID and logical D1 binding only. Configure `OPENAI_API_KEY` as a hosted secret, `OPENAI_MODEL` as a supported model (default `gpt-4.1-mini`), and `ADMIN_USER_IDS` with an actual authenticated Site user ID. `.env.example` documents these fields; no real secrets are committed. Do not paste keys into GitHub or browser code.
 
-Adviser requests require authenticated identity, application registration, same origin and atomic hourly limits. The server supplies relevant D1 records and permits only approved tools. Citation IDs are validated, but factual entailment still needs live evaluation. Questions are not stored in audit events; token usage is recorded.
+Adviser requests require authenticated identity, application registration, same origin and atomic hourly limits. The server supplies relevant D1 records and permits only approved tools. Citation IDs are validated; finite live checks cover entailment examples and an injected-source fixture, while broader factual correctness remains a limitation. Questions are not stored in audit events; token usage is recorded.
 
 The application relies on the Sites dispatcher to inject trusted identity headers. Do not expose the Worker directly on an untrusted endpoint without equivalent header authentication.
+
+## Final submission
+
+See [submission checklist](docs/SUBMISSION-CHECKLIST.md). Teacher access and entering the URL in the course shared document remain pending; neither the Site nor GitHub audience has been expanded. The complete downloadable package is `public/deliverables/submission.zip`.

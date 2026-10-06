@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-06T00:31:19.764Z",
+  "environment": "Actual route handlers with disposable SQLite/D1 adapter and mocked identity; real World Bank and optional real OpenAI",
+  "liveAI": false,
+  "totalTokens": 0,
+  "results": [
+    {
+      "test": "Public evidence and persisted engineering claims",
+      "result": "pass"
+    },
+    {
+      "test": "Anonymous denied adviser",
+      "result": "pass"
+    },
+    {
+      "test": "Anonymous denied design",
+      "result": "pass"
+    },
+    {
+      "test": "Anonymous denied refresh",
+      "result": "pass"
+    },
+    {
+      "test": "Anonymous denied roles",
+      "result": "pass"
+    },
+    {
+      "test": "Signed in but unregistered adviser denied",
+      "result": "pass"
+    },
+    {
+      "test": "Registration requires project-rule agreement",
+      "result": "pass"
+    },
+    {
+      "test": "Registration succeeds",
+      "result": "pass"
+    },
+    {
+      "test": "Registered viewer denied design",
+      "result": "pass"
+    },
+    {
+      "test": "Registered viewer denied refresh",
+      "result": "pass"
+    },
+    {
+      "test": "Registered viewer denied roles",
+      "result": "pass"
+    },
+    {
+      "test": "Administrator saves PUE",
+      "result": "pass"
+    },
+    {
+      "test": "Saved PUE reload and deterministic energy",
+      "result": "pass"
+    },
+    {
+      "test": "Administrator restores original PUE",
+      "result": "pass"
+    },
+    {
+      "test": "External API failure preserves exact saved metrics",
+      "result": "pass"
+    },
+    {
+      "test": "Real external API refresh persists new rows and timestamps",
+      "result": "pass",
+      "detail": {
+        "status": 200,
+        "ok": true,
+        "updatedAt": "2026-10-06T00:31:19.763Z",
+        "count": 3
+      }
+    },
+    {
+      "test": "No production database mutations by this test harness",
+      "result": "pass",
+      "detail": "All route tests above use disposable in-memory SQLite. Production UI checks are recorded separately."
+    }
+  ]
+}
