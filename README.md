@@ -1,5 +1,7 @@
 # Compute Commons
 
+[Live website](https://university-compute-decision.wuhubing19.chatgpt.site/) · [Public repository](https://github.com/Wuhubing/hw3-ai-datacenter) · [Submission package](https://university-compute-decision.wuhubing19.chatgpt.site/deliverables/submission.zip)
+
 An investment decision workspace for a hypothetical university AI consortium. Compare **build and own**, **lease capacity**, and a **conditional first-phase hybrid** across a ten-year horizon. Research covers the United States, China and Singapore.
 
 The working recommendation is to lease while validating demand and grid terms. The analysis does not establish that a 25 MW facility is justified. Economic inputs and engineering sizes are clearly labeled assumptions, not vendor quotes or certified designs.
@@ -8,7 +10,7 @@ The working recommendation is to lease while validating demand and grid terms. T
 
 Implemented: interactive scenario model, country comparison, source register, D1 persistence and migrations, genuine World Bank API refresh, ChatGPT sign-in integration, registration/roles, protected adviser endpoint, controlled tools, citation checks and token accounting.
 
-**Live AI is configured:** the hosted secret is set for `gpt-4.1-mini`. Hosted sign-in, registration, administrator save and external refresh were verified. Actual route tests with real OpenAI cover saved-input changes, missing facts, citations, engineering concepts, certification limits and one malicious-source fixture. Finite tests do not guarantee all model answers; see the validation report. The website and submission package are public. AI requires sign-in and registration. GitHub remains private; repository access can be granted separately if required.
+**Live AI is configured:** the hosted secret is set for `gpt-4.1-mini`. Hosted sign-in, registration, administrator save and external refresh were verified. Actual route tests with real OpenAI cover saved-input changes, missing facts, citations, engineering concepts, certification limits and one malicious-source fixture. Finite tests do not guarantee all model answers; see the validation report. The website and submission package are public. AI requires sign-in and registration. The GitHub repository is public.
 
 ## Deliverables
 
@@ -16,9 +18,9 @@ Implemented: interactive scenario model, country comparison, source register, D1
 - [Editable five-minute committee presentation](public/deliverables/presentation.pptx) and [PDF](public/deliverables/presentation.pdf)
 - [One-page power, cooling, network and failure diagram](public/deliverables/system-diagram.pdf) and [SVG](public/system-diagram.svg)
 - [Software architecture](docs/ARCHITECTURE.md) and [request-chain explanation](public/deliverables/architecture.pdf)
-- [Two-minute demonstration](public/deliverables/demo.mp4), using actual hosted website captures and English synthetic narration, with [transcript/disclosures](docs/DEMO.md)
+- [Two-minute demonstration](public/deliverables/demo.mp4), using actual hosted website captures and the student’s recorded English narration, with [transcript/disclosures](docs/DEMO.md)
 - [Requirements](docs/requirements.md), [methodology](docs/METHODOLOGY.md), [validation](docs/VALIDATION.md), and [individual request walkthrough](docs/REQUEST-WALKTHROUGH.md)
-- [Original assignment](docs/assignment-original.txt), [Chinese summary](docs/ASSIGNMENT-OVERVIEW.zh.md), and [implementation plan](PLAN.md)
+- [Original assignment](docs/assignment-original.txt), [Assignment overview](docs/ASSIGNMENT-OVERVIEW.md), and [implementation plan](PLAN.md)
 
 ## Run locally
 
@@ -62,4 +64,4 @@ The application relies on the Sites dispatcher to inject trusted identity header
 
 ## Final submission
 
-See [submission checklist](docs/SUBMISSION-CHECKLIST.md). The website is public and signed-out browsing has been verified. Entering the URL in the course shared document remains pending. GitHub remains private. The complete downloadable package is `public/deliverables/submission.zip`.
+See [submission checklist](docs/SUBMISSION-CHECKLIST.md). The website is public and signed-out browsing has been verified. Entering the URL in the course shared document remains pending. The GitHub repository is public. The complete downloadable package is `public/deliverables/submission.zip`.

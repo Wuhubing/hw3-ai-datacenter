@@ -1,215 +1,30 @@
-# HW3 执行计划
+# HW3 implementation plan and status
 
-更新日期：2026-10-05
+Updated: October 6, 2026. Individual submission; all deliverables are in English. The country comparison covers the United States, China, and Singapore.
 
-本轮范围：制定可执行计划。尚未开始外部研究、网站开发或发布。要求依据见 [README](README.md) 和 [题目原文](docs/assignment-original.txt)。
+## Objective
 
-## 目标与完成标准
+Build an evidence-based decision workspace for a university AI consortium. Compare ownership, leased capacity, and a conditional phased hybrid without presuming that a 25 MW facility is justified. The recommendation remains lease-first until demand and grid terms are established.
 
-做一个可供投资委员会审阅的大学联盟 AI 数据中心决策网站，以证据判断自建、租用或分阶段混合是否合理。最终建议可以是拒绝建设或要求更多证据，不预设支持 25 MW。
+## Implementation stages
 
-完成意味着：
+1. **Requirements and evidence:** map FR1–FR10 to implementation and tests; distinguish facts, assumptions, calculations, decisions, and unknowns. Preserve reporting periods, units, provenance, and limitations.
+2. **Research and design:** compare three countries using primary sources; use a real external API; develop the conditional 5 MW IT / 6.25 MW total first phase. Analyze the largest-component failure and a 48-hour grid outage without claiming certified resilience.
+3. **Economics:** compare three strategies and three scenarios over ten years. Separate facility and GPU costs, account for replacement, idle energy and grid-delay bridging, and distinguish financing from project costs.
+4. **Website:** implement Decision, Countries, System design, Investment model, Evidence, Adviser, and Deliverables. Make scenario assumptions inspectable and reproducible.
+5. **Persistence and refresh:** implement D1 schema, immutable migrations and idempotent seeds; validate World Bank responses and retain prior valid observations after failures.
+6. **Identity and roles:** authenticate through Sites, require application registration for AI, and enforce editor/admin privileges on the server. Keep secrets out of client code and Git.
+7. **AI adviser:** retrieve current saved design and evidence, provide controlled calculation tools, validate citation IDs, and enforce usage limits. Treat source text as untrusted data.
+8. **Verification and delivery:** test calculations, roles, refresh failure, changed saved inputs, missing facts, citations, and injection resistance; publish the website and prepare the memo, diagrams, slides, demonstration, and evidence package.
 
-- 三个国家有可追溯、口径清楚的比较；一个候选国家和地区有初步设计。
-- 自建、租用、分阶段混合三方案，以相同的科研教学需求进行比较。
-- 三方案均展示基准、供电延迟一年、GPU 利用率减半的情景；有 10 年现金流和明确成本定义。
-- 网站具备真实 D1 持久化、真实外部 API、注册鉴权、带有效引用的 AI 顾问。
-- 工程图、投资备忘录、汇报、演示视频和工程证据完整，部署后通过验收。
+These stages are implemented. See [validation](docs/VALIDATION.md) for the scope and limits of completed checks rather than treating this plan as test evidence.
 
-## 已确认选择与待补信息
+## Current release work
 
-| 问题 | 当前处理 | 影响 |
-| --- | --- | --- |
-| 比较哪三个国家？ | 已确认：美国、中国、新加坡 | 数据收集与选址 |
-| 提交语言？ | 已确认：英文提交、中文沟通 | 页面、报告、视频 |
-| 截止日期？ | 待回答，不安排虚构的日历截止时间 | 各阶段时间安排 |
-| 个人还是团队？人数及分工？ | 已确认：个人作业，无团队分工 | 作者、工作安排和演示 |
+- Replace synthetic narration with the student's supplied recording and align the edited website captures with each section.
+- Keep the public repository, website and submission documentation in English.
+- Publish updated artifacts and verify public repository visibility.
 
-截止日期未提供时按阶段推进，不影响梳理需求、数据字段、计算口径和验收清单。国家比较范围已确认，最终选址和需求规模仍须由证据支持。三国数据特别检查年份、币种、电价所含费用和统计边界；不能将不同口径的数值直接排名。
+## Remaining student/course actions
 
-## 阶段 0：明确题目和提交范围
-
-工作：
-
-- 将 FR1–FR10 映射到页面、后端行为和对应测试。
-- 同时保留两页投资备忘录、五分钟汇报和两分钟网站演示视频。
-- 记录课程共享文档地址、托管登录和课程提供的 OpenAI 调用配置等依赖，实施时核实。
-- 明确非目标：施工级工程设计、实时电网控制、专业工程认证；保留题目要求的投资现金流分析。
-
-产出：`docs/requirements.md`，包含需求、交付物和验收对应关系。
-
-通过条件：没有必交项只存在于聊天中；缺失的课程信息单独列出。
-
-## 阶段 1：建立需求和证据模型
-
-工作：
-
-1. 确定三个国家，分别记录国家级指标和候选地区条件，避免用全国平均电价代替场址报价。
-2. 将用户分为大型训练、间歇科研、教学和推理；列出集群规模、年有效 GPU 小时、并发/峰值、时段、可用性、数据安全需求。
-3. 若没有实际学校调查，使用明确标注的假设用户组合，不声称存在已签约需求。
-4. 建立证据字典，分别保存事实、假设、计算、设计决定和未知。
-5. 确定比较字段：可获得的数据中心规模指标、电力结构、碳强度、能源成本、水和冷却限制、网络与接入条件；不可比的指标不强行排名。
-
-每条证据记录：数值、单位、统计范围、报告期、发布者、URL、获取时间、定义、可信度与局限。来源文本与网站控制指令分离。
-
-产出：`docs/research-plan.md`、`docs/data-dictionary.md`、来源及假设清单草稿。
-
-通过条件：可以解释为何需要某个规模；25 MW 仍是待检验基线。需求足以驱动后面的 GPU 数量与成本计算。
-
-用户参与点：选择国家和真实/假设的服务对象；如有课程资料或团队已有调研，优先纳入。
-
-## 阶段 2：核实数据并提出初步工程设计
-
-工作：
-
-- 从官方统计、公共能源数据、大学/研究机构资料和厂商文档等原始来源研究；至少三条人工核实来源记录，优先保证关键结论均有支持。
-- 筛选至少一个真实外部 API，检查覆盖国家、报告期、单位、访问条件和返回格式；先实际取数，再选定。API 指标必须在网站比较中有用途。
-- 无法取得的建设成本、场址接入报价或租赁报价明确标记为估计或未知；保存估计范围和依据。
-- 明确 IT 负载包含 GPU、CPU、网络、存储等，不能把 20 MW 全部当成 GPU 功耗。
-- 绘制电网 → 配电/UPS → IT 与冷却，以及备用电源、网络和存储的系统关系。
-- 分析最大电气组件失效与电网停电 48 小时：哪些负载继续、哪些降级、备用燃料和冷却能否持续、恢复顺序及未验证条件。
-- 若使用可再生能源或储能，按供电时段、功率、能量、补给和切换能力分析；年发电量不能代替持续供电保证。
-
-产出：可核实的初始数据集、来源清单、`docs/design.md`、一页系统图草稿。
-
-通过条件：数据缺失使用 NULL；每项重要假设有标签；图中的冗余和备用能力与文字一致，未验证的可用性不写成保证。
-
-## 阶段 3：建立可复算的投资模型
-
-统一模型口径：
-
-- 三方案服务同一需求组合；租赁 GPU 和自有 GPU 按型号/性能口径比较，不能把不同设备的一小时直接视为等价。
-- 区分建设期和运营期，明确 10 年观察窗口及延误是否压缩运营年数。
-- 设施与 GPU 设备分开，单列建设、电网升级、IT 设备、替换、用电、人员、维护、租用容量、融资和闲置成本。
-- 区分项目成本与融资现金流，避免同时把购置本金和偿还本金重复计入单位算力成本。
-- 定义有效 GPU 小时及利用率、可用性、作业效率的关系，避免重复扣减。
-- 219 GWh 是 25 MW 全年运行的基线计算；低 GPU 利用率情景应根据固定基础功耗与动态功耗估算电量，不能机械减半。
-- 列明币种、价格基年、汇率口径、折现假设、期末残值，以及税费是否简化。
-
-计算内容：
-
-| 维度 | 内容 |
-| --- | --- |
-| 方案 | 自建并持有、租用算力、分阶段混合 |
-| 情景 | 基准、完整供电延迟一年、GPU 利用率为预测的一半 |
-| 必报指标 | 开业前现金需求、年度运营成本、每有效 GPU 小时成本、面临风险的资本 |
-| 时间明细 | 各年现金流、设备替换、需求和供给变化 |
-| 敏感性 | 利用率、电价、GPU 成本/租价、规模、PUE、供电日期等关键输入 |
-
-对租用方案，解释本地电网延误是否有影响，不强加自建场址风险；混合方案按具体阶段和暴露金额计算。资本风险须给出统一可解释的口径，例如不可回收投入及不可取消承诺扣除可回收价值，不能直接用总投资替代。
-
-模型由确定性程序计算，网站、图表和 AI 读取同一结果。至少手工复核基线能耗、一个年度现金流、一个单位成本和一个压力情景。
-
-产出：模型说明、输入表、三方案×三情景结果、计算模块及有意义的模型测试。
-
-通过条件：变更输入能追溯到输出；三方案比较公平；能够指出最可能改变推荐的三项发现或阈值。
-
-用户参与点：讨论证据支持的初步推荐和关键取舍，而非要求用户替模型猜成本。
-
-## 阶段 4：形成网站第一版
-
-按 Sites 的服务端能力路径建立项目，先核实当前平台配置和课程提供的能力。使用已有证据模型制作可识别、可操作的首个预览，再扩充页面。
-
-| 页面 | 主要用途 |
-| --- | --- |
-| Overview | 展示推荐、规模、核心成本、三个未知及批准/退回所需证据 |
-| Country Comparison | 对比三国指标，显示单位、报告期、来源和局限 |
-| Initial Design | 系统图、需求、GPU 策略、故障与 48 小时停电分析 |
-| Investment Model | 三方案、三情景、10 年现金流及假设敏感性控件 |
-| Evidence | 筛选事实、假设、计算、设计决定和未知；查看来源 |
-| Ask the Adviser | 登录/注册状态、问题、回答、证据引用及使用边界 |
-
-页面以投资决策和比较为主，避免用大幅装饰挤掉模型与证据。移动端保证表格、图表和输入可操作。
-
-产出：连贯的网站预览。尚未接通的功能明确标记，不能用演示回答冒充真实 AI。
-
-通过条件：能从首页找到推荐、改变一个假设、查看影响并追踪来源。
-
-## 阶段 5：D1 持久化和数据更新
-
-工作：
-
-- 从 users、countries、metrics、sources、designs、design_claims 六表出发；按真实查询需要增设财务假设/情景等结构。
-- 在 `db/schema.ts` 定义结构，生成并检查迁移；迁移与种子数据分离，已应用的迁移不改写。
-- 页面、计算和 AI 共用数据访问层；参数化查询；用户/团队范围由后端确认。
-- 实现刷新流程：编辑者请求 → 外部 API → 验证 → 保存有效记录 → 更新页面。
-- 验证响应、字段、数值、单位、报告期、范围、来源和获取时间；失败保留旧值并展示失败/过期状态。
-- 保存假设修改及更新时间，让模型和 AI 使用一致版本。
-
-产出：schema、迁移、种子数据、读取/更新接口、数据刷新结果。
-
-通过条件：重启或重新打开后数据仍存在；刷新成功有新记录；失败不会覆盖最后有效数据。
-
-## 阶段 6：登录、注册和角色权限
-
-工作：使用 Sites 提供的身份流程；登录后建立应用注册记录。区分访客、注册用户、编辑者和团队管理员。管理员角色不得允许用户自行提交获得。
-
-在服务端保护 AI、刷新、设计修改和角色变更接口；前端隐藏按钮仅辅助体验。密钥留在服务端；核实托管调用配置是否就绪，若缺少权限则记录具体依赖。
-
-通过条件：直接调用接口也不能绕过身份、注册和角色检查；已登录未注册与已注册用户行为不同。
-
-## 阶段 7：AI 顾问
-
-工作：
-
-- 从当前设计和问题相关 D1 证据构建上下文，避免每次发送整个数据库。
-- 提供受控的设计查询、国家指标、主张查询和确定性能耗/模型计算工具；外部工具只访问批准的数据源。
-- 每个实质性事实回答返回真实 source ID 和链接；无证据或冲突时明确说明。
-- 将假设、计算、决定与事实分开；不让检索到的文本改变系统规则。
-- 限制请求频率、上下文规模和输出长度，记录可获得的 token 使用，避免测试阶段反复无效调用。
-
-通过条件：修改 D1 的 PUE 后，模型与 AI 同步变化；缺失事实不编造；恶意来源指令不生效；引用指向真实证据。
-
-## 阶段 8：验收、发布和提交材料
-
-验收覆盖：
-
-- 计算：基线、三情景、边界值和单位；零有效 GPU 小时不产生误导性有限成本。
-- 权限：未登录、未注册、普通用户和编辑者；拒绝越权修改。
-- 数据：真实 API 成功、超时/错误数据、旧数据保留、来源与时间。
-- AI：当前值、缺失事实、真实引用、注入攻击、认证边界、用量限制。
-- 网站：主要桌面与移动页面、表格可读、控件与错误提示。
-- 发布：构建、D1 迁移、托管配置，以及线上关键路径复验。
-
-最终交付：
-
-1. 已发布的网站及提交到课程共享文档的 URL（需取得确切文档）。
-2. 一页数据中心系统图，以及独立的软件架构图。
-3. 两页投资备忘录：推荐、证据、三方案/情景、风险、三项可能改变建议的发现。
-4. 五分钟汇报材料和问答提纲。
-5. 两分钟真实网站操作演示视频。
-6. schema、来源/API 清单、设计说明、需求表、测试结果。
-7. 个人请求链路说明；如为团队，确认每位成员要求。
-
-所有材料使用最终冻结的同一组模型结果，避免视频、备忘录和网站数字不一致。无真实通过证据的测试标记为未验证。
-
-## 节奏、优先级与后续提问
-
-依赖顺序：范围 → 需求/证据模型 → 数据/工程设计 → 投资模型 → 网站 → 持久化 → 鉴权 → AI → 验收与交付。平台访问条件在早期核实，避免最后才发现不能发布或调用 AI。
-
-收到截止日期后再分配具体日期；计划按检查点推进，不用题目建议的 3–4 小时作为完整系统的保证。若时间紧，先减少装饰、动画、额外数据源和非必要 AI 工具，不删题目要求。
-
-后续仅在影响范围或真实性时提问：
-
-- 选题阶段：国家、地区、用户与团队资料。
-- 模型检查点：是否有真实学校需求、价格或场址资料可以替代假设。
-- 交付阶段：署名、个人说明、演示形式、课程提交入口。
-
-常规技术实现、页面排版和测试修复由执行者处理，不逐项要求用户决定。新增外部付费或必须由账户持有人操作的事项出现时，再说明具体所需动作。
-
-## 当前进度
-
-- [x] 保存并解读原题
-- [x] 编写执行计划
-- [x] 确认国家：美国、中国、新加坡
-- [x] 确认英文提交、中文沟通，个人作业
-- [ ] 补充截止日期
-- [ ] 开始阶段 0–1
-- [ ] 研究、建模、开发及交付
-
-
-## 实施记录（2026-10-05）
-
-已建立私有 GitHub 仓库，完成三国证据初始集、三方案三情景模型、七个网站视图、D1 schema/迁移、真实 API 刷新、登录注册/角色权限、AI 调用及引用校验代码。模型输入均为可见假设。已生成备忘录、系统图、软件架构和五页汇报。详细测试状态见 docs/VALIDATION.md。
-
-尚未完成的外部依赖：托管 OpenAI 凭据、真实线上身份/管理员配置、模型实际回答和注入测试、课程共享文档地址及提交可见性。网站与仓库初始均保持私有。不得将此阶段标为已全部完成或可直接提交。
+The shared course document URL and deadline have not been supplied. Enter the website URL in the course document when available, review course-specific disclosure rules, and deliver the five-minute presentation. No actual course submission is claimed.

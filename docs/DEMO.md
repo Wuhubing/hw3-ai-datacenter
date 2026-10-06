@@ -1,39 +1,49 @@
 # Two-minute website demonstration
 
-120-second edited sequence of actual hosted website screenshots and the website system diagram, captured during authenticated testing. It is not a continuous screen recording. English voice is synthetic (macOS Samantha), not the student's voice. Captures show real model results, a real successful API refresh, and real OpenAI answers. The temporary PUE test was restored to 1.25 before final baseline captures.
+The video uses the student’s supplied English recording. Long pauses are shortened and speech is accelerated by 1.095x with pitch preserved to fit 120 seconds. No synthetic voice is used.
 
-## 000-012 seconds: A decision, not a sales pitch
+The visuals are an edited sequence of actual hosted website screenshots and the system diagram, not a continuous screen recording. Captures show earlier real testing; their timestamps are historical. The website and GitHub repository are now public. Native recording controls did not respond during this revision, so existing captures were retained.
 
-Compute Commons evaluates whether a shared university data center is justified. The recommendation is to lease first while collecting signed demand and firm grid terms. These are real website captures with synthetic narration.
+## Reading script and scene timing
 
-## 012-024 seconds: Stress the demand
+The following is the intended reading script, not a verbatim transcription of pronunciation, hesitations, or repetitions in the recording.
 
-The scenario controls compare build, lease, and phased hybrid choices. Halving utilization raises owned cost to seven dollars and twenty seven cents per productive GPU hour. Fixed costs and idle power remain.
+### 0.0–17.2 seconds: The investment decision
 
-## 024-039 seconds: Inspect ten years of cash flow
+Welcome to Compute Commons. This website evaluates a proposed university AI data center. My recommendation is to lease capacity first, while keeping a smaller, phased facility as an option. There are no signed long-term computing commitments or confirmed grid terms.
 
-The investment model separates facility, grid, and GPU costs. Annual rows include electricity, staff, maintenance, replacements, and debt service. Sliders expose assumptions, and the current cash flow can be downloaded. Prices remain illustrative, not supplier quotes.
+### 17.2–29.8 seconds: Stress the demand
 
-## 039-051 seconds: Compare three countries
+The model compares building, leasing, and a phased hybrid. Here, I halve GPU utilization. The cost of owned capacity rises sharply because fixed costs remain, even when equipment is underused.
 
-The country comparison uses sourced national statistics. Reporting years and definitions remain visible. National generation is not available site capacity. Missing site tariffs, water allocations, and connection dates stay unknown instead of becoming zero.
+### 29.8–47.6 seconds: Inspect ten years of cash flow
 
-## 051-066 seconds: Plan for failure
+The investment page shows ten years of cash flow. It separates facility and GPU costs, including electricity, staffing, maintenance, equipment replacement, and financing. These prices are clearly labeled assumptions, not supplier quotations.
 
-The engineering concept proposes two transformer paths and five generators, with one spare. Forty eight hours at six point two five megawatts requires three hundred megawatt hours. The ninety thousand liter fuel estimate needs engineering validation.
+### 47.6–62.1 seconds: Compare three countries
 
-## 066-081 seconds: Refresh evidence safely
+The country comparison covers the United States, China, and Singapore. Sources and reporting years are visible. National electricity generation does not prove that power is available at a particular site.
 
-An authorized editor can refresh the historical World Bank series without rebuilding the website. The server validates each response before saving new observations. The page shows the new retrieval time. Failure tests confirm that prior valid records are preserved.
+### 62.1–82.5 seconds: Plan for failure
 
-## 081-096 seconds: Ask about the saved design
+This diagram shows the conditional first phase: five megawatts of IT load and six point two five megawatts of total demand. It includes backup power, cooling, networking, and failure paths. The forty-eight-hour backup concept still requires engineering verification.
 
-The adviser reads saved D1 inputs and engineering claims. Here the baseline PUE is one point two five, and full load annual energy is two hundred nineteen gigawatt hours. A separate test saved one point three and confirmed the answer changed.
+### 82.5–98.4 seconds: Refresh evidence safely
 
-## 096-108 seconds: Inspect the evidence used
+The evidence page distinguishes facts, assumptions, calculations, and unknowns. An authorized user can refresh the external dataset without rebuilding the website. Retrieval times are visible, and failed updates preserve existing data.
 
-This real answer cites Singapore’s Energy Market Authority for the reported natural gas share. It also states the limitation: national statistics do not prove spare capacity. Tokens are recorded, and unsupported claims should remain unresolved.
+### 98.4–105.9 seconds: Ask about the saved design
 
-## 108-120 seconds: Review the decision package
+The AI adviser reads the saved design and evidence. It reports the baseline PUE of one point two five.
 
-The package includes the two page memo, system and software diagrams, five minute presentation, and test results. Access checks and a malicious source test passed. The final course submission still requires reviewer access and the shared document link.
+### 105.9–111.4 seconds: Inspect the evidence used
+
+It explains uncertainties and links to supporting sources.
+
+### 111.4–120.0 seconds: Review the decision package
+
+Finally, the submission package includes the investment memo, system diagrams, presentation, and test results. Thank you.
+
+## Rebuild
+
+Run `python scripts/build-demo.py /absolute/path/to/narration.m4a` with the supplied source recording, Pillow, ffmpeg and ffprobe. The original personal recording is kept outside the repository; its voice appears in the public finished video. Timing/edit metadata is in `data/demo-edit-metadata.json`.

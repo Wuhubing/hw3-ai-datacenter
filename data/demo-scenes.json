@@ -1,65 +1,74 @@
 [
   {
-    "duration": 12,
-    "caption": "A decision, not a sales pitch",
+    "duration": 17.178,
+    "caption": "The investment decision",
     "takeaway": "Lease first. Keep ownership conditional.",
-    "text": "Compute Commons evaluates whether a shared university data center is justified. The recommendation is to lease first while collecting signed demand and firm grid terms. These are real website captures with synthetic narration.",
-    "capture": "01.jpg"
+    "text": "Welcome to Compute Commons. This website evaluates a proposed university AI data center. My recommendation is to lease capacity first, while keeping a smaller, phased facility as an option. There are no signed long-term computing commitments or confirmed grid terms.",
+    "capture": "01.jpg",
+    "start": 0
   },
   {
-    "duration": 12,
+    "duration": 12.664,
     "caption": "Stress the demand",
     "takeaway": "Half utilization exposes ownership risk.",
-    "text": "The scenario controls compare build, lease, and phased hybrid choices. Halving utilization raises owned cost to seven dollars and twenty seven cents per productive GPU hour. Fixed costs and idle power remain.",
-    "capture": "02.jpg"
+    "text": "The model compares building, leasing, and a phased hybrid. Here, I halve GPU utilization. The cost of owned capacity rises sharply because fixed costs remain, even when equipment is underused.",
+    "capture": "02.jpg",
+    "start": 17.178
   },
   {
-    "duration": 15,
+    "duration": 17.739,
     "caption": "Inspect ten years of cash flow",
     "takeaway": "Facility and GPU fleet costs stay separate.",
-    "text": "The investment model separates facility, grid, and GPU costs. Annual rows include electricity, staff, maintenance, replacements, and debt service. Sliders expose assumptions, and the current cash flow can be downloaded. Prices remain illustrative, not supplier quotes.",
-    "capture": "03.jpg"
+    "text": "The investment page shows ten years of cash flow. It separates facility and GPU costs, including electricity, staffing, maintenance, equipment replacement, and financing. These prices are clearly labeled assumptions, not supplier quotations.",
+    "capture": "03.jpg",
+    "start": 29.842
   },
   {
-    "duration": 12,
+    "duration": 14.531,
     "caption": "Compare three countries",
     "takeaway": "United States / China / Singapore",
-    "text": "The country comparison uses sourced national statistics. Reporting years and definitions remain visible. National generation is not available site capacity. Missing site tariffs, water allocations, and connection dates stay unknown instead of becoming zero.",
-    "capture": "04.jpg"
+    "text": "The country comparison covers the United States, China, and Singapore. Sources and reporting years are visible. National electricity generation does not prove that power is available at a particular site.",
+    "capture": "04.jpg",
+    "start": 47.581
   },
   {
-    "duration": 15,
+    "duration": 20.362,
     "caption": "Plan for failure",
-    "takeaway": "A conditional 6.25 MW first phase",
-    "text": "The engineering concept proposes two transformer paths and five generators, with one spare. Forty eight hours at six point two five megawatts requires three hundred megawatt hours. The ninety thousand liter fuel estimate needs engineering validation.",
-    "capture": "05.jpg"
+    "takeaway": "5 MW IT / 6.25 MW total facility demand",
+    "text": "This diagram shows the conditional first phase: five megawatts of IT load and six point two five megawatts of total demand. It includes backup power, cooling, networking, and failure paths. The forty-eight-hour backup concept still requires engineering verification.",
+    "capture": "05.jpg",
+    "start": 62.113
   },
   {
-    "duration": 15,
+    "duration": 15.941,
     "caption": "Refresh evidence safely",
     "takeaway": "Authorized refresh; visible retrieval time",
-    "text": "An authorized editor can refresh the historical World Bank series without rebuilding the website. The server validates each response before saving new observations. The page shows the new retrieval time. Failure tests confirm that prior valid records are preserved.",
-    "capture": "06.jpg"
+    "text": "The evidence page distinguishes facts, assumptions, calculations, and unknowns. An authorized user can refresh the external dataset without rebuilding the website. Retrieval times are visible, and failed updates preserve existing data.",
+    "capture": "06.jpg",
+    "start": 82.475
   },
   {
-    "duration": 15,
+    "duration": 7.477,
     "caption": "Ask about the saved design",
     "takeaway": "Real AI / deterministic energy calculation",
-    "text": "The adviser reads saved D1 inputs and engineering claims. Here the baseline PUE is one point two five, and full load annual energy is two hundred nineteen gigawatt hours. A separate test saved one point three and confirmed the answer changed.",
-    "capture": "07.jpg"
+    "text": "The AI adviser reads the saved design and evidence. It reports the baseline PUE of one point two five.",
+    "capture": "07.jpg",
+    "start": 98.416
   },
   {
-    "duration": 12,
+    "duration": 5.481,
     "caption": "Inspect the evidence used",
     "takeaway": "Real source links and clear uncertainty",
-    "text": "This real answer cites Singapore\u2019s Energy Market Authority for the reported natural gas share. It also states the limitation: national statistics do not prove spare capacity. Tokens are recorded, and unsupported claims should remain unresolved.",
-    "capture": "08.jpg"
+    "text": "It explains uncertainties and links to supporting sources.",
+    "capture": "08.jpg",
+    "start": 105.892
   },
   {
-    "duration": 12,
+    "duration": 8.627,
     "caption": "Review the decision package",
     "takeaway": "Memo / diagrams / slides / test results",
-    "text": "The package includes the two page memo, system and software diagrams, five minute presentation, and test results. Access checks and a malicious source test passed. The final course submission still requires reviewer access and the shared document link.",
-    "capture": "09.jpg"
+    "text": "Finally, the submission package includes the investment memo, system diagrams, presentation, and test results. Thank you.",
+    "capture": "09.jpg",
+    "start": 111.373
   }
 ]

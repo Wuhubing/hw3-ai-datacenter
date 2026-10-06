@@ -1,6 +1,6 @@
 # Validation status
 
-Updated: 2026-10-06 UTC (2026-10-05 evening, America/New_York).
+Updated: October 6, 2026 (America/New_York).
 
 ## Passed and evidence
 
@@ -28,7 +28,7 @@ Initial live testing exposed two important failures: internal claim IDs in exter
 
 Review also caught unsupported inference from gas share to supply stability, and one narrative reference to 6.25 MW as IT rather than total facility load. Instructions now expressly prohibit these conflations. The latter wording refinement does not constitute a general entailment guarantee; verify consequential numerical statements against the visible deterministic facts and persisted concept. A valid source ID proves source existence, not every sentence's correctness. Model answers remain nondeterministic.
 
-The anonymous, unregistered and non-admin role matrix was tested against actual route code with test identities, not separate real production accounts. Hosted owner sign-in/admin actions are separately verified. The owner subsequently authorized public website access. Sites now reports public audience, and signed-out browser checks confirm that the website and saved data load while the adviser requires sign-in. GitHub remains private. A raw command-line HTTP check encountered Cloudflare error 1010, so anonymous endpoint rejection remains supported by the route harness rather than that production HTTP client.
+The anonymous, unregistered and non-admin role matrix was tested against actual route code with test identities, not separate real production accounts. Hosted owner sign-in/admin actions are separately verified. The owner subsequently authorized public website access. Sites now reports public audience, and signed-out browser checks confirm that the website and saved data load while the adviser requires sign-in. The GitHub repository is public. A raw command-line HTTP check encountered Cloudflare error 1010, so anonymous endpoint rejection remains supported by the route harness rather than that production HTTP client.
 
 Real signed demand, utility terms, comparable vendor quotes, permits, water allocation, component derating and engineering availability remain unknown. They are intentionally labeled assumptions or missing facts. Fixed 2015 World Bank values are historical context, not current site conditions.
 
@@ -38,7 +38,7 @@ Real signed demand, utility terms, comparable vendor quotes, permits, water allo
 - System diagram: one-page SVG plus vector PDF; power/cooling/network/failure paths reviewed.
 - Software architecture: one-page graphical request flow PDF; reviewed.
 - Presentation: 5-slide editable PPTX with a five-minute speaker outline, plus a reviewed five-page PDF export. Native PowerPoint execution is not tested.
-- Demo: 120-second edited sequence of actual hosted website captures with synthetic English narration, not a continuous screen recording or the student's voice. See `DEMO.md` for the transcript and disclosures.
+- Demo: 120-second edited sequence of actual hosted website captures with the student’s recorded English narration, not a continuous screen recording. See `DEMO.md` for the transcript and disclosures.
 
 ## Reproduce
 
@@ -60,4 +60,8 @@ The route harness never touches production D1. It uses a disposable in-memory da
 
 ## Public release
 
-The public access setting was confirmed by Sites and by signed-out browser checks after the owner authorized it. The UI and downloadable package now state the current public website / private repository distinction. Entering the URL in the course shared document remains pending.
+The public access setting was confirmed by Sites and by signed-out browser checks after the owner authorized it. The UI and downloadable package now state the current public website and public repository status. Entering the URL in the course shared document remains pending.
+
+## Narration and repository release
+
+The student supplied the replacement English narration. The revised video aligns the reading with actual website captures, shortens pauses and preserves pitch while adjusting speed to meet two minutes. The source recording stays outside Git. All current source documentation is in English. Common credential patterns were checked across Git history before public release; this is a bounded scan, not a guarantee against every possible secret format.

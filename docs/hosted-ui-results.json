@@ -37,7 +37,7 @@
     {
       "test": "Signed-out hosted website visibility and adviser login gate",
       "result": "pass",
-      "detail": "Owner authorized public access. Signed-out browser displayed saved design data and adviser sign-in requirement. GitHub remains private."
+      "detail": "Owner authorized public access. Signed-out browser displayed saved design data and adviser sign-in requirement. GitHub was private at the time of this earlier check; see the current release documentation."
     }
   ]
 }
