@@ -9,7 +9,7 @@ Repository: https://github.com/Wuhubing/hw3-ai-datacenter
 - Two-page investment memorandum with recommendation and three decision-reversing findings.
 - One-page power/cooling/network/failure diagram in PDF and SVG.
 - Five-slide PowerPoint with five-minute speaking notes and PDF export.
-- Two-minute narrated demonstration and transcript/disclosures.
+- Two-minute narrated demonstration, embedded player on the Deliverables page, MP4 download, and English reading script/editing notes.
 - Software architecture flow diagram and individual request walkthrough.
 - D1 schema and immutable initial SQL migration; separate idempotent seeds.
 - Source/API register, initial design description, requirements table, test results and explicit limitations.

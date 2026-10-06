@@ -6,7 +6,7 @@ root=Path(__file__).resolve().parents[1]
 files=[root/'README.md',root/'public/system-diagram.svg',root/'.openai/hosting.json']
 for folder in ['docs','db','drizzle','lib','tests','app/api']:
  files.extend(p for p in (root/folder).rglob('*') if p.is_file())
-files.extend(p for p in (root/'public/deliverables').iterdir() if p.is_file() and p.suffix in ['.pdf','.pptx','.mp4','.txt'])
+files.extend(p for p in (root/'public/deliverables').iterdir() if p.is_file() and p.suffix in ['.pdf','.pptx','.mp4','.txt','.jpg'])
 for name in ['verify-complete.mjs','verify-api.py','build-submission-pdfs.py','build-demo.py','package-submission.py']:files.append(root/'scripts'/name)
 files.extend(p for p in (root/'data').rglob('*') if p.is_file())
 out=root/'public/deliverables/submission.zip'
