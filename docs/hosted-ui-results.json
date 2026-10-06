@@ -35,9 +35,9 @@
       "result": "pass"
     },
     {
-      "test": "Anonymous hosted website visibility",
-      "result": "pending audience choice",
-      "detail": "Site remains owner-private; application route authorization is separately tested."
+      "test": "Signed-out hosted website visibility and adviser login gate",
+      "result": "pass",
+      "detail": "Owner authorized public access. Signed-out browser displayed saved design data and adviser sign-in requirement. GitHub remains private."
     }
   ]
 }

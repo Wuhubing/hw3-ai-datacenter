@@ -28,7 +28,7 @@ Initial live testing exposed two important failures: internal claim IDs in exter
 
 Review also caught unsupported inference from gas share to supply stability, and one narrative reference to 6.25 MW as IT rather than total facility load. Instructions now expressly prohibit these conflations. The latter wording refinement does not constitute a general entailment guarantee; verify consequential numerical statements against the visible deterministic facts and persisted concept. A valid source ID proves source existence, not every sentence's correctness. Model answers remain nondeterministic.
 
-The anonymous, unregistered and non-admin role matrix was tested against actual route code with test identities, not separate real production accounts. Hosted owner sign-in/admin actions are separately verified. The private Sites access gate still prevents an anonymous user from viewing the published website; teacher access requires an explicit audience decision or invitation. No audience was changed during validation.
+The anonymous, unregistered and non-admin role matrix was tested against actual route code with test identities, not separate real production accounts. Hosted owner sign-in/admin actions are separately verified. The owner subsequently authorized public website access. Sites now reports public audience, and signed-out browser checks confirm that the website and saved data load while the adviser requires sign-in. GitHub remains private. A raw command-line HTTP check encountered Cloudflare error 1010, so anonymous endpoint rejection remains supported by the route harness rather than that production HTTP client.
 
 Real signed demand, utility terms, comparable vendor quotes, permits, water allocation, component derating and engineering availability remain unknown. They are intentionally labeled assumptions or missing facts. Fixed 2015 World Bank values are historical context, not current site conditions.
 
@@ -57,3 +57,7 @@ node scripts/verify-complete.mjs --live-key-file /absolute/path/to/existing-key-
 ```
 
 The route harness never touches production D1. It uses a disposable in-memory database and the checked-in migration. The older `api-test-results.json` is retained as the initial local-preview record; it is not the final live-AI report.
+
+## Public release
+
+The public access setting was confirmed by Sites and by signed-out browser checks after the owner authorized it. The UI and downloadable package now state the current public website / private repository distinction. Entering the URL in the course shared document remains pending.

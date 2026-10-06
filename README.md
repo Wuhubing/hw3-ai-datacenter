@@ -8,7 +8,7 @@ The working recommendation is to lease while validating demand and grid terms. T
 
 Implemented: interactive scenario model, country comparison, source register, D1 persistence and migrations, genuine World Bank API refresh, ChatGPT sign-in integration, registration/roles, protected adviser endpoint, controlled tools, citation checks and token accounting.
 
-**Live AI is configured:** the hosted secret is set for `gpt-4.1-mini`. Hosted sign-in, registration, administrator save and external refresh were verified. Actual route tests with real OpenAI cover saved-input changes, missing facts, citations, engineering concepts, certification limits and one malicious-source fixture. Finite tests do not guarantee all model answers; see the validation report. New Site and GitHub repository are private; course reviewers require appropriate access before submission.
+**Live AI is configured:** the hosted secret is set for `gpt-4.1-mini`. Hosted sign-in, registration, administrator save and external refresh were verified. Actual route tests with real OpenAI cover saved-input changes, missing facts, citations, engineering concepts, certification limits and one malicious-source fixture. Finite tests do not guarantee all model answers; see the validation report. The website and submission package are public. AI requires sign-in and registration. GitHub remains private; repository access can be granted separately if required.
 
 ## Deliverables
 
@@ -62,4 +62,4 @@ The application relies on the Sites dispatcher to inject trusted identity header
 
 ## Final submission
 
-See [submission checklist](docs/SUBMISSION-CHECKLIST.md). Teacher access and entering the URL in the course shared document remain pending; neither the Site nor GitHub audience has been expanded. The complete downloadable package is `public/deliverables/submission.zip`.
+See [submission checklist](docs/SUBMISSION-CHECKLIST.md). The website is public and signed-out browsing has been verified. Entering the URL in the course shared document remains pending. GitHub remains private. The complete downloadable package is `public/deliverables/submission.zip`.

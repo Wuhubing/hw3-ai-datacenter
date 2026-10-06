@@ -16,11 +16,11 @@ Repository: https://github.com/Wuhubing/hw3-ai-datacenter
 
 ## Student/course actions still required
 
-1. Select public site access or supply teacher/reviewer email addresses. Website and repository are currently private; a link alone does not grant access. Public website access does not require making GitHub public.
+1. Public website access is enabled and signed-out browsing verified. GitHub remains private; provide repository access separately only if the course requires it. The submission ZIP is publicly downloadable.
 2. Supply the course shared-document URL, then add the website URL in the prescribed location. This has not been submitted or claimed complete.
 3. Review the memo and five-minute speaker notes; be ready to explain assumptions, debt versus project cash flow, and the browser -> D1 -> OpenAI request chain in your own words.
 4. Check course-specific naming, due date and AI-use disclosure rules. No due date or additional rubric was provided. The demo explicitly identifies synthetic narration.
 
 ## Boundary
 
-The software and deliverable files are prepared. Grading access, actual submission and the student's live presentation are separate from implementation. Unknown tariffs, site dates, demand and permits are evidence gaps identified by the analysis, not fabricated facts.
+The software and deliverable files are prepared. Website grading access is enabled. Actual course submission and the student's live presentation remain separate from implementation. Unknown tariffs, site dates, demand and permits are evidence gaps identified by the analysis, not fabricated facts.

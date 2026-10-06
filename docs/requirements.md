@@ -19,4 +19,4 @@ The website implements build/lease/hybrid comparisons, all required stress cases
 
 Non-goals: construction certification, real-time grid operation, procurement authorization, financial advice and measured institutional demand. The ten-year illustrative scenario model is implemented.
 
-Submission access remains pending. The site and GitHub repository remain private until the owner selects a reviewer-access method. Public application routes are tested independently of the Sites audience gate.
+The website is public by owner instruction. Signed-out browser access and the login requirement on the adviser page were verified. GitHub remains private. Unauthenticated API rejection is covered by actual route tests; the raw command-line client encountered a Cloudflare 1010 filter during production checks, so it did not independently verify application endpoint statuses.
