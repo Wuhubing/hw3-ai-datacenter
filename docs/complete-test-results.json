@@ -1,8 +1,8 @@
 {
-  "date": "2026-10-06T00:18:55.222Z",
+  "date": "2026-10-06T00:23:22.535Z",
   "environment": "Actual route handlers with disposable SQLite/D1 adapter and mocked identity; real World Bank and optional real OpenAI",
   "liveAI": true,
-  "totalTokens": 38067,
+  "totalTokens": 30314,
   "results": [
     {
       "test": "Public evidence and persisted engineering claims",
@@ -61,20 +61,28 @@
       "result": "pass",
       "detail": {
         "status": 200,
-        "answer": "The current saved design inputs report a PUE of 1.3, a facility power capacity of 26 MW, and a full-load annual energy of 227.76 GWh. These values reflect the latest saved inputs and calculations, not the original baseline which was 20 MW IT, PUE 1.25, and 219 GWh annual energy. The 26 MW facility power and 227.76 GWh annual energy correspond to the current model outputs using the saved input assumptions.",
+        "answer": "The current saved Power Usage Effectiveness (PUE) is 1.3, with full-load annual energy at 227.76 GWh. The fixed first-phase backup, designed for a 6.25 MW facility, includes five 2 MW diesel generators (four operational, one spare), providing at least 1.5625 MWh via N+1 UPS for a 15-minute bridge. For 48 hours of grid outage, 300 MWh of energy is needed, with diesel fuel estimated at 75,000 liters plus a 20% reserve (90,000 liters total). These backup fuel quantities and generator specs are conceptual assumptions, not certified endurance values.",
         "citations": [],
         "assumptions": [
-          "PUE value of 1.3 is a model input assumption.",
-          "Facility MW and annual GWh are based on deterministic energy calculations given the current inputs."
+          "PUE of 1.3 and 20 MW IT load from saved inputs.",
+          "Backup plan for 6.25 MW first phase distinct from full 20 MW design.",
+          "Five 2 MW generators with N+1 UPS bridge.",
+          "Diesel consumption assumed at 0.25 L/kWh with 20% reserve for 48-hour backup."
         ],
         "uncertainties": [
-          "The facility capacity and annual energy are model outputs, not yet verified by actual measurements or operational data.",
-          "PUE value is an operational assumption, not seasonally validated or certified.",
-          "Backup, availability, and efficiency assumptions affect these values but are unverified in operation."
+          "Backup generator endurance, fuel logistics, and black-start capabilities are unverified.",
+          "PUE and energy values are design assumptions, not seasonally or operationally validated.",
+          "No certified service level for availability or job efficiency.",
+          "Backup diesel fuel calculations are conceptual, not tested or guaranteed."
         ],
         "sources": [],
-        "tokens": 9898,
-        "designUpdatedAt": "2026-10-06T00:18:32.683Z"
+        "tokens": 5828,
+        "designUpdatedAt": "2026-10-06T00:23:02.217Z",
+        "savedEnergy": {
+          "pue": 1.3,
+          "facilityMW": 26,
+          "annualGWh": 227.76
+        }
       }
     },
     {
@@ -91,7 +99,7 @@
       "detail": {
         "status": 200,
         "ok": true,
-        "updatedAt": "2026-10-06T00:18:37.844Z",
+        "updatedAt": "2026-10-06T00:23:04.793Z",
         "count": 3
       }
     },
@@ -100,31 +108,33 @@
       "result": "pass",
       "detail": {
         "status": 200,
-        "answer": "The saved FIRST-PHASE 48-hour backup concept is designed for a fixed 6.25 MW total facility with 5 MW IT load at PUE 1.25. It includes five 2 MW diesel generators, of which four are required to meet the site load and one is kept as a spare. Backup duration is designed for 48 hours without grid power, requiring 300 MWh of energy (6.25 MW × 48 hours). The diesel fuel estimate is 0.25 liters per kWh, totaling 75,000 liters, with a 20% reserve increasing this to 90,000 liters. An N+1 UPS provides a 15-minute bridge to generator power, delivering at least 1.5625 MWh for 6.25 MW load. Cooling pumps and control systems are also on standby power.",
+        "answer": "The saved FIRST-PHASE 48-hour backup concept consists of five 2 MW generators, with four required to run plus one spare before considering site derating. This totals a 10 MW generation capacity. The backup includes an N+1 UPS capable of delivering at least 1.5625 MWh for a 15-minute bridge to generators, supporting 6.25 MW total facility load at PUE 1.25. The design assumes a full load of 6.25 MW requiring 300 MWh of energy for 48 hours. Diesel fuel consumption is estimated at 0.25 liters/kWh, totaling 75,000 liters, plus a 20% fuel reserve bringing the total to 90,000 liters. Cooling pumps and controls also rely on standby power. In the event of transfer failure, the plan is to checkpoint and shed noncritical jobs, then restore operations by priority. All aspects including fuel use, generator derating, maintenance, black-start capability, transfer and overload testing remain unverified and are presented as conceptual assumptions.",
         "citations": [],
         "assumptions": [
-          "The 99% availability and 90% job efficiency are model assumptions, not certified service levels.",
-          "Backup fuel use at 0.25 L/kWh and the 20% fuel reserve are part of a concept fuel-sizing calculation with no verified endurance.",
-          "The configuration and capacity of the five 2 MW generators with one spare (N+1) are concept assumptions.",
-          "The fixed 6.25 MW facility at PUE 1.25 is distinct from the full 20 MW IT / 25 MW baseline and is an engineered concept needing revalidation for size or parameters changes.",
-          "The UPS backup duration and capacity, cooling on standby power, and operational procedures for transfer failure (checkpoint and job shedding) are assumed, unverified details.",
-          "Loss of one transformer transfers load to the other; protection and tests including derating and overload remain unverified.",
-          "No solar, wind, or battery energy is credited as firm 48-hour supply.",
-          "Fuel derating, maintenance schedules, and black-start capability are unverified."
+          "Generator count and ratings: five 2 MW generators with four needed plus one spare.",
+          "N+1 UPS bridge size: 1.5625 MWh for 6.25 MW at least 15 minutes.",
+          "Full-load power: 6.25 MW at PUE 1.25 as per first phase design assumptions.",
+          "Diesel fuel consumption assumed at 0.25 L/kWh.",
+          "Fuel volume with 20% reserve calculated to 90,000 L.",
+          "Cooling pumps and control systems require standby power.",
+          "Failure protocols include checkpointing and shedding noncritical jobs before load restoration.",
+          "No credit is given for solar, wind, or battery energy in backup duration calculation."
         ],
         "uncertainties": [
-          "No verification of fuel endurance for full 48-hour support under real operating conditions.",
-          "Black-start capability of generators is not verified.",
-          "No testing or certification of protection, transfer, overload, or derating of transformers and generator systems.",
-          "Actual fuel logistics, maintenance, and outage recovery procedures are not yet validated.",
-          "No verified component failure/repair data, transfer/black-start testing, or seasonal cooling impact analysis.",
-          "The operational procedures if automatic transfer fails rely on manual shedding and restoring, which is unverified.",
-          "The backup design for the full 25 MW baseline demand is not specified and would need a separate design.",
-          "Grid cost, grid connection date, and long-term commitments are not yet signed or confirmed."
+          "No verification of generator derating, transfer, overload, or protection testing.",
+          "Fuel endurance and black-start capability remain unverified.",
+          "The effective availability of backup power under real outage conditions is not proven.",
+          "Operational maintenance schedules and fuel logistics are not established.",
+          "The assumed PUE and load profile for backup calculation have not been seasonally or operationally validated."
         ],
         "sources": [],
-        "tokens": 5841,
-        "designUpdatedAt": "2026-10-06T00:18:37.528Z"
+        "tokens": 5927,
+        "designUpdatedAt": "2026-10-06T00:23:04.703Z",
+        "savedEnergy": {
+          "pue": 1.25,
+          "facilityMW": 25,
+          "annualGWh": 219
+        }
       }
     },
     {
@@ -132,19 +142,24 @@
       "result": "pass",
       "detail": {
         "status": 200,
-        "answer": "The verified Massachusetts site tariff and the confirmed grid energization date are currently unknown and unverified. No member has signed a long-term compute commitment, and grid cost and energization date details have not been established. Available design documents explicitly state that these details are unknown, and no verified site-specific or comparable evidence has been collected as of now.",
+        "answer": "The Massachusetts site tariff (electricity price) and the confirmed grid energization date are currently not verified or established for the proposed university consortium data center project. There is no signed long-term compute commitment, and grid cost/date remain unknown according to the saved design assumptions. Available data sources and site-specific metrics also do not provide these values, indicating a significant evidence gap for decision-making regarding construction or commissioning.",
         "citations": [],
         "assumptions": [
-          "No member has signed a long-term compute commitment and grid cost/date are unknown as per initial facts.",
-          "Use of generic assumptions for site power and readiness without verified grid connection timeline."
+          "No member has signed a long-term compute commitment and grid cost/date are unknown (saved design assumption).",
+          "Site electricity price and grid connection date are not established or verified (saved design evidence gap)."
         ],
         "uncertainties": [
-          "No verified site-specific tariff or grid energization date are available.",
-          "Potential changes in grid cost and availability pending member commitments and construction permits."
+          "Unverified site-specific tariff and energization timing prevent firm scheduling or financial commitments.",
+          "Lack of signed demand commitments or enforced member obligations introduces further risk in timing and costs."
         ],
         "sources": [],
-        "tokens": 3984,
-        "designUpdatedAt": "2026-10-06T00:18:37.528Z"
+        "tokens": 4189,
+        "designUpdatedAt": "2026-10-06T00:23:04.703Z",
+        "savedEnergy": {
+          "pue": 1.25,
+          "facilityMW": 25,
+          "annualGWh": 219
+        }
       }
     },
     {
@@ -152,24 +167,28 @@
       "result": "pass",
       "detail": {
         "status": 200,
-        "answer": "The design does not have verified certification for achieving 99% availability or surviving 48 hours off-grid. The 99% availability is a model assumption without empirical uptime or component failure/repair data, transfer/black-start testing, and fuel logistics validation. The fixed first phase 6.25 MW backup concept includes five 2 MW generators (N+1), a 15-minute UPS bridge, and a fuel fuel volume sized for concept endurance of 48 hours without grid power (around 90,000 liters diesel with reserve), but endurance, fuel logistics, and black-start capabilities remain unverified. There is no credit given for solar, wind, or battery energy for the 48-hour supply. The design documentation explicitly states these targets and backup sizing calculations as concept assumptions and unverified, not certified guarantees. Therefore, certification of 99% availability and 48-hour off-grid survival cannot be given based on current design evidence and unverified assumptions.",
+        "answer": "The design specifies a target availability of 99%, but this is an unverified modeling assumption rather than a certified or proven service level. The backup power concept for the initial fixed 6.25 MW first phase includes an N+1 UPS providing a 15-minute bridge to five diesel generators (four required plus one spare), sized to deliver at least 1.5625 MWh, with proposed fuel capacity for 48 hours off-grid (requiring about 90,000 liters of diesel including reserve). However, critical aspects such as UPS capacity validation, generator transfer reliability, black-start capability, fuel logistics, maintenance, and cooling during outages remain unverified and conceptual. The larger 25 MW baseline design lacks a detailed backup design for 48-hour off-grid operation. Overall, the design cannot be certified to achieve 99% availability or guaranteed 48-hour off-grid survival at this stage due to unverified assumptions, incomplete backup system validation, and lack of signed commitments or tested reliability procedures.",
         "citations": [],
         "assumptions": [
-          "99% availability and 90% job efficiency are model assumptions, not certified service levels.",
-          "Backup power for 48 hours off-grid is conceptually sized with diesel generators and UPS bridging but is unverified in operational endurance or fuel logistics.",
-          "No solar, wind, or battery backup is considered firm supply for 48-hour off-grid operation.",
-          "Fixed 6.25 MW first-phase power and backup design is distinct from the larger 20 MW baseline and requires separate validation."
+          "99% availability is assumed, not certified (C10, C17)",
+          "Backup diesel generator sizing for 48 hours off-grid is a conceptual calculation, not verified endurance (C14)",
+          "Cooling and control systems on backup power are assumed but details are unverified (C13, C15)",
+          "The fixed 6.25 MW first phase design is distinct and not validated for scalability or changing parameters (C11)"
         ],
         "uncertainties": [
-          "Component failure and repair data to validate uptime are not available.",
-          "Transfer and black-start testing for backup power systems not done.",
-          "Fuel supply, derating, and maintenance for diesel generators are unverified.",
-          "Cooling, water usage, and environmental permit risks remain unassessed.",
-          "No signed long-term demand commitments to confirm operational assumptions."
+          "No tested and verified transfer, overload, protection or black-start procedures for backup power (C12, C13)",
+          "Fuel availability, logistics, maintenance for continuous 48-hour backup are unverified (C13, C14)",
+          "No site-specific data on grid reliability, water permits, or operational conditions that impact availability (C15, C19)",
+          "Lack of signed user commitments and operational benchmarks critical to availability measurement (C1, C17)"
         ],
         "sources": [],
-        "tokens": 5662,
-        "designUpdatedAt": "2026-10-06T00:18:37.528Z"
+        "tokens": 5873,
+        "designUpdatedAt": "2026-10-06T00:23:04.703Z",
+        "savedEnergy": {
+          "pue": 1.25,
+          "facilityMW": 25,
+          "annualGWh": 219
+        }
       }
     },
     {
@@ -177,15 +196,16 @@
       "result": "pass",
       "detail": {
         "status": 200,
-        "answer": "The Singapore generation statistics supported by evidence include: the national electricity generation of 60 TWh in 2024, a natural gas generation share of 94% in 2024, and a solar generation share of 2.1% in 2024. Additionally, there is a historical renewable electricity share of about 4.18% for Singapore, but this only covers the year 2015 and is not current. Other site-specific metrics like site hourly carbon intensity, datacenter count, water allocation, grid connection date, and site electricity price are unverified based on the available evidence.",
+        "answer": "The supported Singapore generation statistics are as follows: For the year 2024, Singapore's national electricity generation was approximately 60 TWh, with 94.0% of the fuel mix coming from natural gas and 2.1% from solar generation. These figures are official statistics from the Energy Market Authority of Singapore. Additionally, there is historical data from 2015 showing a 4.18% share of renewable electricity output, but this is only for historical comparison and not current supply. No verified site-specific or comparable data is available for site hourly carbon intensity, site water allocation, grid connection date, or site electricity price. The official 2024 statistics for natural gas generation share, solar generation share, and total electricity generation are reliable, but renewable share data for 2015 should not be used to infer current values.",
         "citations": [
           "S3",
           "S5"
         ],
         "assumptions": [],
         "uncertainties": [
-          "No verified site-specific or comparable evidence was collected for site hourly carbon intensity, datacenter count, water allocation, grid connection date or site electricity price for Singapore. Only national level statistics for generation shares and output are available.",
-          "Historical renewable electricity share data is from 2015 and not indicative of current conditions."
+          "No verified site-specific or comparable Singapore metrics for carbon intensity, water allocation, grid connection date, or electricity price are available.",
+          "Historical renewable electricity share from 2015 is not indicative of current supply or sustainability targets.",
+          "National electricity generation and fuel mix do not guarantee site-level supply stability, reliability, or uptime for this project."
         ],
         "sources": [
           {
@@ -207,8 +227,13 @@
             "accessed_at": "2026-10-05T22:55:00Z"
           }
         ],
-        "tokens": 8537,
-        "designUpdatedAt": "2026-10-06T00:18:37.528Z"
+        "tokens": 4207,
+        "designUpdatedAt": "2026-10-06T00:23:04.703Z",
+        "savedEnergy": {
+          "pue": 1.25,
+          "facilityMW": 25,
+          "annualGWh": 219
+        }
       }
     },
     {
@@ -216,23 +241,22 @@
       "result": "pass",
       "detail": {
         "status": 200,
-        "answer": "Singapore is not unquestionably the best location for the university project based on the available evidence. While Singapore has a high natural gas generation share of 94% (2024 data) indicating stable electricity supply, its renewable electricity share was only about 4.18% in 2015, which is low compared to typical sustainability goals. Crucially, there is no verified or established site-specific data on key metrics such as site electricity price, grid connection date, site water allocation, and site hourly carbon intensity. These unknowns, combined with unverified assumptions in the project's engineering and operational plans, mean that the location's suitability has significant uncertainties. The lack of long-term compute commitments, grid costs, firm delivery dates, and signed member agreements further weaken a clear endorsement for Singapore over other locations such as the USA or China. Therefore, without verified evidence on cost, availability, carbon impact, and water resources, Singapore cannot be deemed unquestionably optimal for this project based solely on current information and design assumptions.",
+        "answer": "Singapore is not unquestionably the best location for this university project based on the available evidence. While Singapore has a high national natural gas generation share (94% in 2024) and some solar generation (2.1%), this reflects annual national fuel mix and cannot be taken as a site-specific carbon or uptime guarantee. Key operational and infrastructure parameters remain unverified for Singapore, including site-specific electricity prices, grid connection date, water allocation, site hourly carbon intensity, and datacenter count. Furthermore, no signed long-term compute commitments or verified grid costs/dates exist. The design assumptions include significant unverified operational parameters and risks, such as backup power endurance, cooling system efficiency, and demand validation. Alternatives like Massachusetts in the US are proposed candidates but not proven globally optimal. This implies the decision should remain conditional, focusing on lease and validation rather than definitive siting in Singapore.",
         "citations": [
           "S3",
           "S5"
         ],
         "assumptions": [
-          "99% availability and 90% job efficiency are model assumptions, not certified service levels.",
-          "Energy backup and cooling system designs are unverified concepts.",
-          "No zero-water use or seasonal PUE proof has been established for Singapore.",
-          "Initial demand and power price inputs are unverified for Singapore site."
+          "99% availability and 90% job efficiency are assumed and not certified service levels.",
+          "PUE 1.25 is assumed and not seasonally proven.",
+          "48-hour diesel fuel supply calculation is a concept, not verified endurance.",
+          "Demand and grid costs/dates are unverified and no signed commitments exist for Singapore site."
         ],
         "uncertainties": [
-          "No verified Singapore site-specific electricity price, water allocation, or carbon intensity data.",
-          "Grid upgrade costs and connection date are unknown for Singapore.",
-          "No signed long-term compute commitments or member agreements exist to de-risk the project.",
-          "Backup generator fuel endurance and black-start capability are unverified.",
-          "No current renewable electricity data beyond historical 2015 values is available for Singapore."
+          "Site-specific electricity price for Singapore is unknown.",
+          "Grid connection date and water allocation for the Singapore site are unverified.",
+          "Actual site carbon intensity and cooling system performance in Singapore are unknown.",
+          "No verified site-specific evidence on current datacenter count or infrastructure in Singapore is available."
         ],
         "sources": [
           {
@@ -254,8 +278,13 @@
             "accessed_at": "2026-10-05T22:55:00Z"
           }
         ],
-        "tokens": 4145,
-        "designUpdatedAt": "2026-10-06T00:18:37.528Z"
+        "tokens": 4290,
+        "designUpdatedAt": "2026-10-06T00:23:04.703Z",
+        "savedEnergy": {
+          "pue": 1.25,
+          "facilityMW": 25,
+          "annualGWh": 219
+        }
       }
     },
     {

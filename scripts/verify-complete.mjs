@@ -30,7 +30,7 @@ login('test-admin');await call('register',{agreed:true});
 const before=e.design.inputs, updated={...before,pue:1.3};
 check('Administrator saves PUE',(await call('design',{inputs:updated,version:e.design.updated_at})).status===200);
 e=await evidence();check('Saved PUE reload and deterministic energy',e.design.inputs.pue===1.3&&e.design.inputs.itMW*e.design.inputs.pue*8.76===227.76);
-if(key&&!onlyInjection){const a=await call('adviser',{question:'What is the CURRENT SAVED PUE, facility MW, and full-load annual GWh? Use the current saved inputs, not the original baseline.'});check('Live AI follows changed saved PUE',a.status===200&&/1\.3\b/.test(a.answer)&&/227\.76|227\.8/.test(a.answer),a);}
+if(key&&!onlyInjection){const a=await call('adviser',{question:'In under 90 words, give the CURRENT SAVED PUE and full-load annual GWh, then describe the fixed first-phase 48-hour backup: generator count, MWh and fuel liters. Distinguish assumptions from certified performance.'});check('Live AI follows changed saved PUE',a.status===200&&/1\.3\b/.test(a.answer)&&/227\.76|227\.8/.test(a.answer),a);}
 check('Administrator restores original PUE',(await call('design',{inputs:before,version:e.design.updated_at})).status===200);
 const count=sql.prepare('SELECT COUNT(*) n FROM metrics').get().n;
 const realFetch=globalThis.fetch;

@@ -9,7 +9,7 @@ import re,math
 root=Path(__file__).resolve().parents[1];out=root/'public/deliverables'
 c=canvas.Canvas(str(out/'presentation.pdf'),pagesize=(960,540));c.setTitle('Compute Commons - Investment Committee Presentation')
 for n in range(1,6):
- c.drawImage(str(root/f'.sites-runtime/artifacts/slide-{n}.png'),0,0,width=960,height=540);c.showPage()
+ c.drawImage(str(root/f'data/presentation-exports/slide-{n}.png'),0,0,width=960,height=540);c.showPage()
 c.save()
 # Exact simple shapes/text from the repository SVG, with native vector PDF content.
 c=canvas.Canvas(str(out/'system-diagram.pdf'),pagesize=(1200,760));c.setTitle('Compute Commons - First-phase System Diagram')
